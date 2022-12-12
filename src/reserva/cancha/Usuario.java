@@ -6,7 +6,7 @@ public class Usuario {
     
     // private static final String EMAIL_REGEX_PATTERN = "^(.+)@(.+).(.+)$";
     
-    private int id;
+    private int idUsuario;
     private String nombreUsuario;
     private String email;
     private String contraseña;
@@ -14,21 +14,19 @@ public class Usuario {
     public Usuario() {
     }
 
-    public Usuario(int id, String nombreUsuario, String email, String contraseña) {
-        // this.isValidEmail(email);
-        
-        this.id = id;
+    public Usuario(int idUsuario, String nombreUsuario, String email, String contraseña) {
+        this.idUsuario = idUsuario;
         this.nombreUsuario = nombreUsuario;
         this.email = email;
         this.contraseña = contraseña;
     }
 
-    public int getId() {
-        return id;
+    public int getIdUsuario() {
+        return idUsuario;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setIdUsuario(int idUsuario) {
+        this.idUsuario = idUsuario;
     }
 
     public String getNombreUsuario() {
