@@ -1,0 +1,126 @@
+:root {
+    font-family: 'Inter', sans-serif;
+    --blue-green: #28696A;
+    --hover-green: #1f5152;
+    --blue: #213058;
+    --hover-blue: #2e4174;
+    --old-white: #F0E6D7;
+    --mustard: #F4AE3F;
+    --hover-mustard: #eea125;
+    --black: #101010;
+    --grey: #eeeeee;
+    --contenedor: #f3f4ff;
+}
+
+body { 
+    margin: 0;
+}
+
+/* HEADER */
+
+.encabezado {
+    height: 5em;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    background-color: var(--blue-green);
+    align-content: center;
+    color: var(--old-white);
+}
+
+.bloque-izq {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 2em 3em;
+}
+
+h1 {
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.bloque-dcha {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 2em 3em;
+}
+
+.bloque-dcha a {
+    text-decoration: none;
+    color: var(--old-white);
+    font-size: 1rem;
+    font-weight: bold;
+    padding-right: 1rem;
+    transition: box-shadow 0.3s ease-in-out;
+}
+
+.bloque-dcha a:hover {
+    color: var(--mustard);
+}
+
+/* CUERPO */
+
+.contenedor-cuerpo {
+    height: 61vh;
+}
+
+/* FOOTER */
+
+footer {
+    padding-top: 2em;
+    background-color: var(--blue-green);
+    color: var(--old-white);
+    display: grid;
+    grid-template-rows: auto auto;
+    gap: 1.5em;
+}
+
+footer h3 {
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+footer a, p {
+    font-size: 1em;
+    font-weight: 500;
+}
+
+.contenedor-pie {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-items: center;
+}
+
+.contenedor-pie a {
+    display: block;
+    text-decoration: none;
+    color: var(--old-white);
+}
+
+.contenedor-pie a:hover {
+    color: var(--hover-mustard);
+}
+
+.contacto a {
+    padding-left: 1.5em;
+    align-items:center;
+    display: flex;
+    line-height: .5em;
+}
+
+.contacto a i {
+    padding-right: .5em;
+}
+
+.contacto p {
+    padding-top: .5em;
+}
+
+.info {
+    align-items: center;
+    text-align: center;
+}
