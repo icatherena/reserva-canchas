@@ -88,11 +88,13 @@ h1 {
 .contenedor-cuerpo {
     height: 100vh;
     background-color: var(--grey);
+    overflow-y: hidden;
+    overflow-x: hidden;
 }
 
 .slider {
     width:100%;
-    overflow:hidden;
+    
     margin:auto;
 }
 
