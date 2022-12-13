@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
@@ -19,105 +18,58 @@
     <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
     
     <link rel="stylesheet" href="style.css">
-
 </head>
 <body>
 
     <!--ENCABEZADO-->
-      <header class="encabezado">
-      
-        <section class="bloque-izq">
-          <h1>Sistema de Reservas</h1>
-        </section>  
-
-        <section class="btn-acceso">
-          <!-- <a href="">Inicio</a> -->
-          <a class="btn-acceso-a" href="log-in/index.html">Iniciar sesión</a>
+    <header>
+        <section class="enlaces-header">
+            <h1>Gestor de reservas</h1>
+            <a href="#quienes-bloque">¿Quiénes somos?</a>
+            <a href="#mision-bloque">Nuestra misión</a>
+            <a href="#soporte">Soporte</a>
         </section>
-
-      </header>
+        <section class="btn-log-in">
+            <a href="log-in/index.html">Acceder</a>
+        </section>
+    </header>
 
     <!--CUERPO-->
-      <section class="contenedor-cuerpo">
-        <!--CARROUSEL-->
-      <!--  <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
-          <div class="carousel-inner">
-            <div class="carousel-item active">
-              <img src="basket.jpg" class="d-block w-100" alt="...">
-            </div>
-            <div class="carousel-item">
-              <img src="football.jpg" class="d-block w-100" alt="...">
-            </div>
-            <div class="carousel-item">
-              <img src="padel.jpg" class="d-block w-100" alt="...">
-            </div>
-          </div>
-          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-          </button>
-          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-          </button>
-        </div> -->
-
-        <section class="slider">
-          <ul>
-              <li>
-                  <img src="basket.jpg">
-              </li>
-              <li>
-                  <img src="football.jpg">
-              </li>
-              <li>
-                  <img src="padel.jpg">
-              </li>
-              <li>
-                <img src="football.jpg">
-              </li>
-          </ul>
-      </section>
-
-      </section> 
-    
-    <!--PIE-->
-      <footer class="pie">
-        
-        <section class="contenedor-pie">
-
-          <section class="info">
-            <p>Grupo 7 | Todos los derechos reservados</p>
-            <p>PoloTic, 2022</p>
-            <p>Posadas, Misiones</p>
-          </section>
-          
-          <section class="contenedor-bloque">
-
-            <section class="faqs">
-              <h3>FAQS</h3>
-              <a href="#sobre-nosotros">
-                  <i class='bx bx-user bx-sm'></i>
-                  <p>Sobre nosotros</p>
-              </a>
+        <section class="contenedor-cuerpo">
+            <section class="quienes-bloque" id="quienes-bloque">
+                <div class="q-txt">
+                    <h3>¿Quiénes somos?</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis repudiandae quasi consectetur reprehenderit, error ex corporis iure, ullam accusantium sunt laborum in omnis assumenda quo? Quos in quae tempora recusandae.</p>
+                </div>
+                <div class="q-img">
+                    <img src="logo.png" alt="Logo-empresa">
+                </div>
             </section>
-
-          <section class="contacto">
-            <h3>Contacto</h3>
-            <a href="mailto:reservacancha@gmail.com">
-                <i class='bx bx-envelope bx-sm'></i>
-                <p>Correo</p>
-            </a>
-          </section>
-  
-          </section>
-          
-          
-          
-
+            <section class="mision-bloque" id="mision-bloque">
+                <div class="m-img">
+                    <img src="" alt="">
+                </div>
+                <div class="m-txt">
+                    <h3>Nuestra misión y nuestros valores</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium provident temporibus pariatur repudiandae odit minima optio blanditiis, odio quisquam qui earum iusto placeat tempora commodi sequi. Nam eos deleniti dolorum!</p>
+                </div>
+            </section>
+            <section class="soporte-bloque" id="soporte">
+                <div class="s-txt">
+                    <h3>¿Necesitas asistencia?</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae ut vero voluptatem expedita numquam minus totam voluptas, quia quasi tempora quaerat cupiditate voluptates quas culpa, officiis magnam praesentium repellendus. Soluta!
+                    Soporte podrá brindarte una solución. ¡Haz click <a href="mailto:soportereservas@gmail.com">aquí</a>!</p>
+                </div>
+                <div class="s-img">
+                    <img src="" alt="">
+                </div>
+            </section>
         </section>
 
-      </footer>
-
+    <!--FOOTER-->
+        <footer>
+            <p>Desarrollado por Grupo 7 | Todos los derechos reservados</p>
+            <p>PoloTic | Posadas, Misiones | 2022</p>
+        </footer>
 </body>
 </html>
