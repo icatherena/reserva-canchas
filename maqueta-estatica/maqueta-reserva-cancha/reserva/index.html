@@ -102,10 +102,16 @@
         <!--SUBMIT BUTTON-->
         <section class="contenedor-submit">
             <div class="col-auto">
-            <button type="submit" class="btn btn-primary submit-btn">Buscar canchas</button>
+            <button type="submit" class="btn btn-primary submit-btn" data-bs-toggle="popover" title="Alerta" data-bs-content="Transacción exitosa, cancha disponible/ Cancha no disponible, vuelva a intentarlo con otra fecha">Buscar canchas</button>
         </div>
         </section>
-        
+
+        <script>
+            var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
+            var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
+            return new bootstrap.Popover(popoverTriggerEl)
+            })
+        </script>
     </section>
 
     <!--FOOTER-->
