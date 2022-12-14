@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+    
+    <title>Reserva</title>
+    <link rel="icon" href="cancha2.ico">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!--ENCABEZADO-->
+    <header>
+        <section class="enlaces-header">
+            <h1>Gestor de reservas</h1>
+        </section>
+        <section class="btn-home">
+            <a href="/index.html">Inicio</a>
+        </section>
+    </header>
+    
+    <!--CUERPO-->
+
+    <!--FORMULARIO-->
+    <section class="contenedor-form">
+        
+        <!--COMPLEJO-->
+        <h3>Selecciona el complejo</h3>
+        <form class="row g-3">
+            <div class="col-12">
+                <label for="inputDireccion" class="form-label">Dirección</label>
+                <select id="inputDireccion" class="form-select">
+                    <option selected>Opción 1</option>
+                    <option>Opción 2</option>
+                    <option>Opción 3</option>
+                </select>
+            </div>
+        </form>
+
+        <!--DEPORTE-->
+        <h3>Selecciona el deporte</h3>        
+        <form class="row g-3">
+            <div class="col-12">
+                <label for="inputDeporte" class="form-label">Deporte</label>
+                <select id="inputDeporte" class="form-select">
+                    <option selected>Opción 1</option>
+                    <option>Opción 2</option>
+                    <option>Opción 3</option>
+                    <option>Opción 4</option>
+                </select>
+            </div>
+        </form>
+
+        <h3>Selecciona la cancha</h3>
+        <!--MATERIAL CANCHA-->
+        <form class="row g-3">
+            <div class="col-12">
+                <label for="inputTipoCancha" class="form-label">Material</label>
+                <select id="inputTipoCancha" class="form-select">
+                    <option selected>Opción 1</option>
+                    <option>Opción 2</option>
+                    <option>Opción 3</option>
+                    <option>Opción 4</option>
+                </select>
+            </div>
+        </form>
+        <!--DIMENSIONES CANCHA-->
+        <form class="row g-3">
+            <div class="col-12">
+                <label for="inputTamañoCancha" class="form-label">Dimensiones</label>
+                <select id="inputTamañoCancha" class="form-select">
+                    <option selected>Opción 1</option>
+                    <option>Opción 2</option>
+                    <option>Opción 3</option>
+                    <option>Opción 4</option>
+                </select>
+            </div>
+        </form>
+
+        <h3>Datos de la reserva</h3>
+        <!--FECHA INICIO-->
+        <div class="col-12">
+            <label for="inputFechaInicio" class="form-label">Desde</label>
+            <input class="input date-form" type="datetime-local">
+        </div>
+        <!--FECHA FIN-->
+        <div class="col-12">
+            <label for="inputFechaFin" class="form-label">Hasta</label>
+            <input class="input date-form" type="datetime-local">
+        </div>
+        
+        <!--SUBMIT BUTTON-->
+        <section class="contenedor-submit">
+            <div class="col-auto">
+            <button type="submit" class="btn btn-primary submit-btn">Buscar canchas</button>
+        </div>
+        </section>
+        
+    </section>
+
+    <!--FOOTER-->
+    <footer>
+        <p>Desarrollado por Grupo 7 | Todos los derechos reservados</p>
+        <p>PoloTic | Posadas, Misiones | 2022</p>
+    </footer>
+</body>
+</html>
