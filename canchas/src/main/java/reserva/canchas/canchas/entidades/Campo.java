@@ -31,6 +31,8 @@ public class Campo {
   
   @OneToMany
   private List<Alquiler> alquileres;
+
+  //TODO: pasar metodos de alquilar, calcular y desponibilidad a servicios
   
   public Alquiler alquilar(Date fechaInicio, Date fechaFin, Usuario usuario) throws Exception {
     if (disponibilidad(fechaInicio, fechaFin)) {

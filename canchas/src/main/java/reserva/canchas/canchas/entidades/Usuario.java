@@ -32,6 +32,8 @@ public class Usuario {
 
   @OneToOne
   private ComplejoDeportivo complejoDeportivo;
+
+  //TODO: pasar autenticacion a servicios
   
   public void iniciarSesión() {
     try {

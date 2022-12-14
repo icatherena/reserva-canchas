@@ -27,6 +27,8 @@ public class ComplejoDeportivo {
   @OneToMany
   private List<Campo> campos;
   
+
+  //TODO: pasar getter de campo a servicios
   public Campo getCampo(String deporte) {
     for (Campo campo : campos) {
       if (campo.getDeporte().getNombre().equals(deporte)) {
