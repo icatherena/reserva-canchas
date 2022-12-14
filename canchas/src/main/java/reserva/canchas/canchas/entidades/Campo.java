@@ -42,7 +42,7 @@ public class Campo {
       alquiler.setUsuario(usuario);
       alquiler.setCampo(this);
       
-      // Calculate the rental amount based on the rental dates and the field's size and type
+      // Calcula el monto del alquiler según las fechas de alquiler y el tamaño y tipo del campo
       alquiler.setCantidad(calcularCantidad(fechaInicio, fechaFin, tamaño, tipo));
       
       alquileres.add(alquiler);

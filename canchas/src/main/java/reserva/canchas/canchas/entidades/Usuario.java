@@ -33,32 +33,21 @@ public class Usuario {
   @OneToOne
   private ComplejoDeportivo complejoDeportivo;
 
-  //TODO: pasar autenticacion a servicios
-  
-  public void iniciarSesión() {
-    try {
-      Authentication authenticate = Authentication.authenticate(
-        new UsernamePasswordAuthenticationToken(nombreUsuario, contraseña)
-      );
-    } catch (AuthenticationException e) {
-      // TODO: ver de que otra forma manejar la excepción.
-      System.out.println("Login failed: " + e.getMessage());
-    }
-  }
-  
-  public void cerrarSesión() {
-    Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-    if (authentication != null) {
-      logoutHandler.logout(request, response, authentication);
-    }
-  }
+  private String deporte;
 
-  public void seleccionarDeporte(String deporte) {
+
+  public boolean authenticate(String nombreUsuario, String contraseña) {
+    return this.nombreUsuario.equals(nombreUsuario) && this.contraseña.equals(contraseña);
+  }
+  
+
+  //TODO: manejar las exepciones en el
+  public void seleccionarDeporte(String deporte) throws Exception {
     if (complejoDeportivo == null) {
-      throw new InvalidOperationException("El usuario debe estar asociado a un complejo deportivo antes de seleccionar un deporte.");
+      throw new Exception("El usuario debe estar asociado a un complejo deportivo antes de seleccionar un deporte.");
     }
     if (!complejoDeportivo.getDeportes().contains(deporte)) {
-      throw new InvalidOperationException("El deporte seleccionado no está disponible en el complejo deportivo del usuario");
+      throw new Exception("El deporte seleccionado no está disponible en el complejo deportivo del usuario");
     }
     this.deporte = deporte;
   }
