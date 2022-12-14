@@ -24,7 +24,7 @@ header {
     height: 5em;
     margin: 0;
     display: grid;
-    grid-template-columns: 14fr 2.9fr;
+    grid-template-columns: 14fr 3fr;
     flex-direction: row;
     background-color: var(--contenedor);
 }
@@ -87,11 +87,12 @@ header {
 /*CUERPO*/
 
 /*FORMULARIO*/
+
 .contenedor-form {
     height: auto;
-    width: 60em;
+    width: 50em;
     margin: 3em auto;    
-    padding: 2em 3em;
+    padding: 2em 2em;
     display: flex;
     flex-direction: column;
     border-radius: 0.5rem;
@@ -102,36 +103,15 @@ header {
     background-color: var(--contenedor) 
 }
 
-.contenedor-form h3 {
-    font-size: 1.4em;
-    font-weight: 600;
-    margin-bottom: .5em;
+.tab-pills {
+    margin: 0;
 }
 
-form {
-    margin: 1.5em;
+.tab-content {
+    margin-left: 2em;
+    width: 60%;
 }
 
-.date-form {
-    margin: .5em;
-}
-
-.contenedor-submit {
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
-}
-
-.submit-btn {
-    border: var(--blue-green);
-    background-color: var(--blue-green);
-}
-
-.submit-btn:hover {
-    border: var(--hover-green);
-    background-color: var(--hover-green);
-}
 
 /* FOOTER */
 footer {
