@@ -1,5 +1,4 @@
 package reserva.canchas.canchas.entidades;
-import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -41,7 +40,6 @@ public class Usuario {
   }
   
 
-  //TODO: manejar las exepciones en el
   public void seleccionarDeporte(String deporte) throws Exception {
     if (complejoDeportivo == null) {
       throw new Exception("El usuario debe estar asociado a un complejo deportivo antes de seleccionar un deporte.");
