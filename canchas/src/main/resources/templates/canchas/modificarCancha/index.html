@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en"
+    xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+    
+    <title>Modificar</title>
+    <link rel="icon" href="cancha2.ico">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!--ENCABEZADO-->
+    <header>
+        <section class="enlaces-header">
+            <h1>Vista de Administrador</h1>
+        </section>
+        <section class="btn-log-out">
+            <a href="#">Cerrar sesión</a> <!--A COMPLETAR-->
+        </section>
+    </header>
+    
+    <!--CUERPO-->
+
+    <!--FORMULARIO-->
+
+    <section class="contenedor-form" th:fragment="contenido">
+        <!--CANCHA-->
+        <form class="card-body" th:action="@{'/canchas/editar/{id}' (id=${cancha.id})}" th:object="${cancha}" th:method="PUT">
+                   
+                    <div class="mb-3">
+                        <label for="deporteCancha" class="form-label">Deporte</label>
+                        <input type="text" class="form-control" th:field="*{deporteCancha}" th:errorClass="'is-invalid'" placeholder="Deporte de la Cancha">
+                        <div class="invalid-feedback" th:if="${#fields.hasErrors('deporteCancha')}" th:errors="*{deporteCancha}"></div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="ubicacionCancha" class="form-label">Ubicación</label>
+                        <input type="text" class="form-control" th:field="*{ubicacionCancha}" th:errorClass="'is-invalid'" placeholder="Ubicación de la Cancha">
+                        <div class="invalid-feedback" th:if="${#fields.hasErrors('ubicacionCancha)}" th:errors="*{ubicacionCancha}"></div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="materialCancha" class="form-label">Material</label>
+                        <input type="text" class="form-control" th:field="*{materialCancha}" th:errorClass="'is-invalid'" placeholder="Material de la Cancha">
+                        <div class="invalid-feedback" th:if="${#fields.hasErrors('materialCancha')}" th:errors="*{materialCancha}"></div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="dimensionesCancha" class="form-label">Dimensiones</label>
+                        <input type="text" class="form-control" th:field="*{dimensionesCancha}" th:errorClass="'is-invalid'" placeholder="Dimensiones de la Cancha">
+                        <div class="invalid-feedback" th:if="${#fields.hasErrors('dimensionesCancha')}" th:errors="*{dimensionesCancha}"></div>
+                    </div>
+                    
+                    <div>
+                        <button type="submit" class="btn btn-primary">Modificar</button>
+                    </div>
+
+        </form>
+    </section>
+    
+    <script th:fragment="script">
+        $(document).ready(function() {
+            $('.select2').select2({
+                placeholder: 'Seleccione una opción',
+                allowClear: true,
+                width: '100%',
+            });
+        });
+    </script>
+    
+    <!--FOOTER-->
+    <footer>
+        <p>Desarrollado por Grupo 7 | Todos los derechos reservados</p>
+        <p>PoloTic | Posadas, Misiones | 2022</p>
+    </footer>
+</body>
+</html>
