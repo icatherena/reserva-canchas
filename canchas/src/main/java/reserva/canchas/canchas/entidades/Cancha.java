@@ -16,7 +16,7 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-public class Campo {
+public class Cancha {
 
   @Id
   @GeneratedValue
@@ -40,9 +40,9 @@ public class Campo {
       alquiler.setFechaInicio(fechaInicio);
       alquiler.setFechaFin(fechaFin);
       alquiler.setUsuario(usuario);
-      alquiler.setCampo(this);
+      alquiler.setCancha(this);
       
-      // Calcula el monto del alquiler según las fechas de alquiler y el tamaño y tipo del campo
+      // Calcula el monto del alquiler según las fechas de alquiler y el tamaño y tipo del Cancha
       alquiler.setCantidad(calcularCantidad(fechaInicio, fechaFin, tamaño, tipo));
       
       alquileres.add(alquiler);

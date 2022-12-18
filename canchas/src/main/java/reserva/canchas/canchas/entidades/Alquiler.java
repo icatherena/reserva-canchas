@@ -24,8 +24,11 @@ public class Alquiler {
   private int cantidad;
   
   @OneToOne
-  private Campo campo;
+  private Cancha Cancha;
   
   @OneToOne
   private Usuario usuario;
+
+  @OneToOne
+  private ComplejoDeportivo Complejo;
 }

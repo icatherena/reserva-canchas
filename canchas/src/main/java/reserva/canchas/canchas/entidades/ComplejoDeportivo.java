@@ -25,14 +25,14 @@ public class ComplejoDeportivo {
   private List<Deporte> deportes;
   
   @OneToMany
-  private List<Campo> campos;
+  private List<Cancha> Canchas;
   
 
-  //TODO: pasar getter de campo a servicios
-  public Campo getCampo(String deporte) {
-    for (Campo campo : campos) {
-      if (campo.getDeporte().getNombre().equals(deporte)) {
-        return campo;
+  //TODO: pasar getter de Cancha a servicios
+  public Cancha getCancha(String deporte) {
+    for (Cancha Cancha : Canchas) {
+      if (Cancha.getDeporte().getNombre().equals(deporte)) {
+        return Cancha;
       }
     }
     return null;
