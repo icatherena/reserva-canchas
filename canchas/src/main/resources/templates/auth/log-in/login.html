@@ -5,7 +5,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Acceder</title>
+    
+    <!--<title>Acceder</title>-->
+    <title th:text="${titulo}"></title>
+
     <link rel="icon" href="/cancha2.ico">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -36,7 +39,7 @@
 
             </form>
             
-            <h2 class="enlace-sign-up">¿No tienes una cuenta? Crea una <a href="../sign-up/index.html">aquí</a></h2>
+            <h2 class="enlace-sign-up" sec:authorize="isAnonymous()">¿No tienes una cuenta? Crea una <a href="../sign-up/registro.html">aquí</a></h2>
         
         </article>
         

@@ -9,7 +9,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
     
-    <title>Crear Nuevo Deporte</title>
+    <title>Ver Complejo</title>
     <link rel="icon" href="cancha2.ico">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -20,12 +20,16 @@
 </head>
 <body>
     <!--ENCABEZADO-->
-    <header>
+    <header th:fragment="header">
         <section class="enlaces-header">
             <h1>Vista de Administrador</h1>
         </section>
-        <section class="btn-log-out">
-            <a href="#">Cerrar sesión</a> <!--A COMPLETAR-->
+        <section sec:authorize="isAuthenticated()">
+            <form class="btn-log-out" th:action="@{/logout}" method="POST">
+                <button type="submit" onclick="return confirm('¿Está seguro de cerrar sesión?')">
+                    Cerrar sesión
+                </button>
+            </form>
         </section>
     </header>
     
@@ -34,33 +38,24 @@
     <!--FORMULARIO-->
 
     <section class="contenedor-form" th:fragment="contenido">
-        <!--COMPLEJO DEPORTIVO-->
-            <form class="card-body" th:action="@{/deportes/crear}" th:object="${deportes}" method="POST">
-
-                <div class="mb-3">
-                    <label for="nombreDeporte" class="form-label">Deporte</label>
-                    <input type="text" class="form-control" th:field="*{nombreDeporte}" th:errorClass="'is-invalid'" placeholder="Deporte">
-                    <div class="invalid-feedback" th:if="${#fields.hasErrors('nombreDeporte')}" th:errors="*{nombreDeporte}"></div>
-                </div>
-                
-                <div>
-                    <button type="submit" class="btn btn-primary">Crear</button>
-                </div>
-
-            </form>
+        <div class="card-header h3" th:text="${complejoDeportivo.nombre}"></div>
+            <p class="p1">
+                <span class="fw-bold">Nombre del Complejo:</span>
+                <span th:text="${complejoDeportivo.nombre}"></span>
+            </p>
+            <p>
+                <span class="fw-bold">Ubicación del Complejo:</span>
+                <span th:text="${complejoDeportivo.ubicacion}"></span>
+            </p>
+            <p>
+                <span class="fw-bold">Deporte del Complejo:</span> <!--DEBERÍA MOSTRAR UN COMBOBOX?-->
+                <span th:text="${complejoDeportivo.deporteComplejo}"></span>
+            </p>                 
+        </div>
     </section>
-    
-    <script th:fragment="script">
-        $(document).ready(function() {
-            $('.select2').select2({
-                placeholder: 'Seleccione una opción',
-                allowClear: true,
-                width: '100%',
-            });
-        });
-    </script>
-    
-    
+
+    <script th:fragment="script"></script>
+
     <!--FOOTER-->
     <footer>
         <p>Desarrollado por Grupo 7 | Todos los derechos reservados</p>

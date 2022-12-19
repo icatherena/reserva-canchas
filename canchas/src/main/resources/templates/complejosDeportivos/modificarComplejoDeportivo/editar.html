@@ -20,12 +20,16 @@
 </head>
 <body>
     <!--ENCABEZADO-->
-    <header>
+    <header th:fragment="header">
         <section class="enlaces-header">
             <h1>Vista de Administrador</h1>
         </section>
-        <section class="btn-log-out">
-            <a href="#">Cerrar sesión</a> <!--A COMPLETAR-->
+        <section sec:authorize="isAuthenticated()">
+            <form class="btn-log-out" th:action="@{/logout}" method="POST">
+                <button type="submit" onclick="return confirm('¿Está seguro de cerrar sesión?')">
+                    Cerrar sesión
+                </button>
+            </form>
         </section>
     </header>
     
@@ -34,17 +38,24 @@
     <!--FORMULARIO-->
 
     <section class="contenedor-form" th:fragment="contenido">
-        <!--DEPORTE-->
-            <form class="card-body" th:action="@{'/deportes/editar/{id}' (id=${deporte.id})}" th:object="${deporte}" th:method="PUT">
-                    <div class="mb-3">
-                        <label for="nombreDeporte" class="form-label">Deporte</label>
-                        <input type="text" class="form-control" th:field="*{nombreDeporte}" th:errorClass="'is-invalid'" placeholder="Deporte">
-                        <div class="invalid-feedback" th:if="${#fields.hasErrors('nombreDeporte')}" th:errors="*{nombreDeporte}"></div>
-                    </div>
-                    
-                    <div>
-                        <button type="submit" class="btn btn-primary">Modificar</button>
-                    </div>
+        <!--COMPLEJO DEPORTIVO-->
+            <form class="card-body" th:action="@{'/complejosdeportivos/editar/{id}' (id=${complejodeportivo.id})}" th:object="${complejodeportivo}" th:method="PUT">
+
+                        <div class="mb-3">
+                            <label for="nombreComplejo" class="form-label">Nombre</label>
+                            <input type="text" class="form-control" th:field="*{nombreComplejo}" th:errorClass="'is-invalid'" placeholder="Nombre del Complejo">
+                            <div class="invalid-feedback" th:if="${#fields.hasErrors('nombreComplejo')}" th:errors="*{nombreComplejo}"></div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="deporteComplejo" class="form-label">Deporte</label>
+                            <input type="text" class="form-control" th:field="*{deporteComplejo}" th:errorClass="'is-invalid'" placeholder="Deporte">
+                            <div class="invalid-feedback" th:if="${#fields.hasErrors('deporteComplejo')}" th:errors="*{deporteComplejo}"></div>
+                        </div>
+    
+                        <div>
+                            <button type="submit" class="btn btn-primary">Modificar</button>
+                        </div>
+
             </form>
     </section>
     

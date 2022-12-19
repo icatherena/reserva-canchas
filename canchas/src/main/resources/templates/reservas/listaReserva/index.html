@@ -9,7 +9,9 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
     
-    <title>Listado de Reservas</title>
+    <!--<title>Listado de Reservas</title>-->
+    <title th:text="${titulo}"></title>
+    
     <link rel="icon" href="cancha2.ico">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -24,12 +26,16 @@
 </head>
 <body>
     <!--ENCABEZADO-->
-    <header>
+    <header th:fragment="header">
         <section class="enlaces-header">
             <h1>Gestor de reservas</h1>
         </section>
-        <section class="btn-log-out">
-            <a href="#">Cerrar sesión</a> <!--A COMPLETAR-->
+        <section sec:authorize="isAuthenticated()">
+            <form class="btn-log-out" th:action="@{/logout}" method="POST">
+                <button type="submit" onclick="return confirm('¿Está seguro de cerrar sesión?')">
+                    Cerrar sesión
+                </button>
+            </form>
         </section>
     </header>
     

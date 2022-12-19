@@ -9,7 +9,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
     
-    <title>Ver Cancha</title>
+    <title>Ver Deporte</title>
     <link rel="icon" href="cancha2.ico">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -20,12 +20,16 @@
 </head>
 <body>
     <!--ENCABEZADO-->
-    <header>
+    <header th:fragment="header">
         <section class="enlaces-header">
             <h1>Vista de Administrador</h1>
         </section>
-        <section class="btn-log-out">
-            <a href="#">Cerrar sesión</a> <!--A COMPLETAR-->
+        <section sec:authorize="isAuthenticated()">
+            <form class="btn-log-out" th:action="@{/logout}" method="POST">
+                <button type="submit" onclick="return confirm('¿Está seguro de cerrar sesión?')">
+                    Cerrar sesión
+                </button>
+            </form>
         </section>
     </header>
     
@@ -34,23 +38,11 @@
     <!--FORMULARIO-->
 
     <section class="contenedor-form" th:fragment="contenido">
-        <div class="card-header h3" th:text="${cancha.nombre}"></div>
+        <div class="card-header h3" th:text="${deporte.nombreDeporte}"></div>
             <p class="p1">
-                <span class="fw-bold">Deporte de la Cancha:</span>
-                <span th:text="${cancha.deporteCancha}"></span>
-            </p>
-            <p>
-                <span class="fw-bold">Ubicación de la Cancha:</span>
-                <span th:text="${cancha.ubicacionCancha}"></span>
-            </p>
-            <p>
-                <span class="fw-bold">Material de la Cancha:</span> <!--DEBERÍA MOSTRAR UN COMBOBOX?-->
-                <span th:text="${cancha.materialCancha"></span>
-            </p>  
-            <p>
-                <span class="fw-bold">Dimensiones de la Cancha:</span>
-                <span th:text="${cancha.dimensionesCancha"></span>
-            </p>                 
+                <span class="fw-bold">Nombre del Deporte:</span>
+                <span th:text="${deporte.nombreDeporte}"></span>
+            </p>            
         </div>
     </section>
 

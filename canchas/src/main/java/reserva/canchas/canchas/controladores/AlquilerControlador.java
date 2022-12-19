@@ -13,6 +13,11 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import reserva.canchas.canchas.entidades.Alquiler;
 import reserva.canchas.canchas.servicios.AlquilerServicio;
 import reserva.canchas.canchas.servicios.UsuarioServicio;
+<<<<<<< HEAD
+=======
+import reserva.canchas.canchas.servicios.CanchaServicio;
+import reserva.canchas.canchas.servicios.ComplejoDeportivoServicio;
+>>>>>>> origin/kt
 
 @RestController
 @RequestMapping("/reservas")
@@ -20,6 +25,18 @@ public class AlquilerControlador implements WebMvcConfigurer {
   
   @Autowired
   private AlquilerServicio alquilerServicio;
+<<<<<<< HEAD
+=======
+
+  @Autowired
+  private ComplejoDeportivoServicio complejoDeportivoServicio;
+
+  @Autowired
+  private CanchaServicio canchaServicio;
+
+  @Autowired
+  private UsuarioServicio usuarioServicio;
+>>>>>>> origin/kt
   
   @GetMapping
   public ModelAndView index() {
@@ -92,9 +109,15 @@ public class AlquilerControlador implements WebMvcConfigurer {
     maw.addObject("titulo", "Editar alquiler");
     maw.addObject("vista", "alquileres/editar");
     maw.addObject("alquiler", alquiler);
+<<<<<<< HEAD
     maw.addObject("canchas", canchaServicio.getAll());//TODO crear el crud de canchaServicio
     maw.addObject("usuarios", UsuarioServicio.getAll());
     maw.addObject("complejos", complejoServicio.getAll());//TODO crear el crud de complejoServicio
+=======
+    maw.addObject("canchas", canchaServicio.getAll()); //TODO crear el crud de canchaServicio
+    maw.addObject("usuarios", usuarioServicio.getAll());
+    maw.addObject("complejos", complejoDeportivoServicio.getAll()); //TODO crear el crud de complejoServicio
+>>>>>>> origin/kt
     return maw;
   }
   
@@ -105,6 +128,7 @@ public class AlquilerControlador implements WebMvcConfigurer {
     }
     alquilerServicio.save(alquiler);
     ModelAndView maw = this.index();
+<<<<<<< HEAD
     maw.addObject("exito", "Alquiler modificado exitosamente");
     return maw;
   }
@@ -119,3 +143,19 @@ public class AlquilerControlador implements WebMvcConfigurer {
   }
   
 }
+=======
+    maw.addObject("exito", "Reserva modificada exitosamente");
+    return maw;
+  }
+
+  @DeleteMapping("/{id}")
+  private ModelAndView delete(@PathVariable("id") int id)
+  {
+    alquilerServicio.delete(id);
+    ModelAndView maw = this.index();
+    maw.addObject("exito", "Reserva eliminada exitosamente");
+    return maw;
+  }
+  
+}
+>>>>>>> origin/kt

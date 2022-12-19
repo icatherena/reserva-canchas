@@ -67,21 +67,24 @@ header {
     align-items: center;
 }
 
-.btn-log-out a {
+.btn-log-out button {
     width:100%;
     height:2.4em;
     text-decoration: none;
     border-radius: 1em;
     background-color: var(--mustard);
     color: var(--black);
-    padding: .5em 1.3em;
+    padding: 0 1.3em;
     font-size: medium;
     font-weight: 600;
+    border-color: var(--mustard);
+    box-shadow: none;
 }
 
-.btn-log-out a:hover {
+.btn-log-out button:hover {
     background-color: var(--hover-mustard);
     color: var(--grey);
+    border-color: var(--hover-mustard);
 }
 
 /*CUERPO*/

@@ -1,15 +1,17 @@
 package reserva.canchas.canchas.entidades;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
-import lombok.Getter;
-
-
+import lombok.*;
 
 @Entity
+@NoArgsConstructor
+@AllArgsConstructor
 @Getter
+@Setter
+@Data
+@Builder
+@Table(name="deportes")
 public class Deporte {
 
   @Id
