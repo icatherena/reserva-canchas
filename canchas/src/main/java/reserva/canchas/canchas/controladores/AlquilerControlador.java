@@ -109,8 +109,8 @@ public class AlquilerControlador implements WebMvcConfigurer {
     return maw;
   }
   
-  @DeleteMapping("/{id}")
-  private ModelAndView delete(@PathVariable("id") int id)
+  @DeleteMapping("eliminar/{id}")
+  private ModelAndView eliminar(@PathVariable("id") int id)
   {
     alquilerServicio.delete(id);
     ModelAndView maw = this.index();
