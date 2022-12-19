@@ -24,15 +24,15 @@ xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/s
 <body>
 
     <!--ENCABEZADO-->
-    <header>
+    <header th:fragment="header">
         <section class="enlaces-header">
             <h1>Gestor de reservas</h1>
             <a href="#quienes-bloque">¿Quiénes somos?</a>
             <a href="#mision-bloque">Nuestra misión</a>
             <a href="#soporte">Soporte</a>
         </section>
-        <section class="btn-log-in">
-            <a href="log-in/index.html">Acceder</a>
+        <section class="btn-log-in" sec:authorize="isAnonymous()">
+            <a href="log-in/login.html">Acceder</a>
         </section>
     </header>
 

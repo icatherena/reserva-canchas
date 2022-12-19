@@ -22,12 +22,16 @@
 </head>
 <body>
     <!--ENCABEZADO-->
-    <header>
+    <header th:fragment="header">
         <section class="enlaces-header">
             <h1>Gestor de reservas</h1>
         </section>
-        <section class="btn-log-out">
-            <a href="#">Cerrar sesión</a> <!--A COMPLETAR-->
+        <section sec:authorize="isAuthenticated()">
+            <form class="btn-log-out" th:action="@{/logout}" method="POST">
+                <button type="submit" onclick="return confirm('¿Está seguro de cerrar sesión?')">
+                    Cerrar sesión
+                </button>
+            </form>
         </section>
     </header>
     
