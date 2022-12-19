@@ -35,5 +35,4 @@ public class AlquilerServicio {
         alquilerRepositorio.deleteById(id);
     }
 
-
 }

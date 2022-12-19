@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import reserva.canchas.canchas.entidades.*;
 
 @Repository
-public interface AlquilerRepositorio extends JpaRepository<Alquiler, Integer> {
-    Alquiler findById(int id);
+public interface ComplejoDeportivoRepositorio extends JpaRepository<ComplejoDeportivo, Integer> {
+    ComplejoDeportivo findById(int id);
 }
