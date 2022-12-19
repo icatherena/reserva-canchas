@@ -67,4 +67,8 @@ public class UsuarioServicio implements UserDetailsService {
         usuarioRepositorio.save(usuario);
     }
 
+    public Object getAll() {
+        return null;
+    }
+
 }

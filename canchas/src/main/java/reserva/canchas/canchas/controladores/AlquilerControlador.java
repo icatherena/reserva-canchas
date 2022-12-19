@@ -22,6 +22,15 @@ public class AlquilerControlador implements WebMvcConfigurer {
   
   @Autowired
   private AlquilerServicio alquilerServicio;
+
+  @Autowired
+  private ComplejoDeportivoServicio complejoDeportivoServicio;
+
+  @Autowired
+  private CanchaServicio canchaServicio;
+
+  @Autowired
+  private UsuarioServicio usuarioServicio;
   
   @GetMapping
   public ModelAndView index() {
@@ -95,7 +104,7 @@ public class AlquilerControlador implements WebMvcConfigurer {
     maw.addObject("vista", "alquileres/editar");
     maw.addObject("alquiler", alquiler);
     maw.addObject("canchas", canchaServicio.getAll()); //TODO crear el crud de canchaServicio
-    maw.addObject("usuarios", UsuarioServicio.getAll());
+    maw.addObject("usuarios", usuarioServicio.getAll());
     maw.addObject("complejos", complejoDeportivoServicio.getAll()); //TODO crear el crud de complejoServicio
     return maw;
   }
