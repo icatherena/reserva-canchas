@@ -1,0 +1,55 @@
+<head>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<!--ENCABEZADO-->
+<header th:fragment="header">
+    <section class="enlaces-header">
+        <h1>Vista de Administrador</h1>
+    </section>
+    <section sec:authorize="isAuthenticated()">
+        <form class="btn-log-out" th:action="@{/logout}" method="POST">
+            <button type="submit" onclick="return confirm('¿Está seguro de cerrar sesión?')">
+                Cerrar sesión
+            </button>
+        </form>
+    </section>
+</header>
+
+<!--CUERPO-->
+
+<!--FORMULARIO-->
+
+<section class="contenedor-form-crear" th:fragment="contenido">
+    <!--COMPLEJO DEPORTIVO-->
+        <form class="card-body" th:action="@{/roles/crear}" th:object="${rol}" method="POST">
+
+                    <div class="mb-3">
+                        <label for="nombreRol" class="form-label">Nombre</label>
+                        <input type="text" class="form-control" th:field="*{nombreRol}" th:errorClass="'is-invalid'" placeholder="Nombre del Rol">
+                        <div class="invalid-feedback" th:if="${#fields.hasErrors('nombreRol')}" th:errors="*{nombreRol}"></div>
+                    </div>
+    
+                    <div>
+                        <button type="submit" class="btn btn-primary">Guardar</button>
+                    </div>
+
+        </form>
+</section>
+
+<script th:fragment="script">
+    $(document).ready(function() {
+        $('.select2').select2({
+            placeholder: 'Seleccione una opción',
+            allowClear: true,
+            width: '100%',
+        });
+    });
+</script>
+
+
+<!--FOOTER-->
+<footer>
+    <p>Desarrollado por Grupo 7 | Todos los derechos reservados</p>
+    <p>PoloTic | Posadas, Misiones | 2022</p>
+</footer>

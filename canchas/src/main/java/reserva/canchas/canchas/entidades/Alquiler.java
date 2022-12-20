@@ -3,17 +3,18 @@ package reserva.canchas.canchas.entidades;
 
 import java.util.Date;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 @Entity
+@NoArgsConstructor
+@AllArgsConstructor
 @Getter
 @Setter
+@Data
+@Builder
+@Table(name="alquileres")
 public class Alquiler {
   @Id
   @GeneratedValue

@@ -1,0 +1,81 @@
+<!--ENCABEZADO-->
+<header th:fragment="header">
+    <section class="enlaces-header">
+        <h1>Vista de Administrador</h1>
+    </section>
+    <section sec:authorize="isAuthenticated()">
+        <form class="btn-log-out" th:action="@{/logout}" method="POST">
+            <button type="submit" onclick="return confirm('¿Está seguro de cerrar sesión?')">
+                Cerrar sesión
+            </button>
+        </form>
+    </section>
+</header>
+
+<!--CUERPO-->
+
+<!--FORMULARIO-->
+
+<section class="contenedor-form-rol" th:fragment="contenido">
+    <!--
+    <div class="row">
+        <div th:if="${exito}" class="alert alert-success alert-dismissible fade show">
+            <span th:text="${exito}"></span>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        <div th:if="${error}" class="alert alert-danger alert-dismissible fade show">
+            <span th:text="${error}"></span>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    </div> -->
+
+
+    <div class="row mb-3">
+        <div class="col h3">Listado de Complejos</div>
+        <a href="/roles/crear" class="col-auto btn btn-lg btn-success">
+            <i class='bx bx-plus bx-xs'></i>
+        </a>
+    </div>
+
+    <table id="roles" class="display" style="width:100%">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="r : ${roles}">
+                <td th:text="${r.nombreRol}"></td>
+                <td>
+                    <a class="btn btn-primary" th:href="@{'roles/{id}' (id=${r.id})}">
+                        <i class='bx bx-file-find bx-xs' ></i>
+                    </a>
+
+                    <a class="btn btn-secondary" th:href="@{'/roles/editar/{id}' (id=${r.id})}">
+                        <i class='bx bx-edit-alt bx-xs'></i>
+                    </a>
+
+                    <form class="d-inline" th:action="@{'/roles/{id}' (id=${r.id})}" th:method="DELETE">
+                        <button type="submit" class="btn btn-danger" onclick="return confirm('¿Está seguro de eliminar el Rol?')">
+                            <i class='bx bx-trash bx-xs'></i>
+                        </button>
+                    </form>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+</section>
+
+<script th:fragment="script">
+    $(document).ready(function() {
+        $('#roles').DataTable();
+    } );
+</script>    
+
+<!--FOOTER-->
+    <footer>
+        <p>Desarrollado por Grupo 7 | Todos los derechos reservados</p>
+        <p>PoloTic | Posadas, Misiones | 2022</p>
+    </footer>

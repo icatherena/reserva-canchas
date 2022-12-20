@@ -1,0 +1,66 @@
+    <!--ENCABEZADO-->
+    <header th:fragment="header">
+        <section class="enlaces-header">
+            <h1>Vista de Administrador</h1>
+        </section>
+        <section sec:authorize="isAuthenticated()">
+            <form class="btn-log-out" th:action="@{/logout}" method="POST">
+                <button type="submit" onclick="return confirm('¿Está seguro de cerrar sesión?')">
+                    Cerrar sesión
+                </button>
+            </form>
+        </section>
+    </header>
+    
+    <!--CUERPO-->
+
+    <!--FORMULARIO-->
+
+    <section class="contenedor-form-cancha" th:fragment="contenido">
+        <!--COMPLEJO DEPORTIVO-->
+            <form class="card-body" th:action="@{/canchas/crear}" th:object="${cancha}" method="POST">
+
+                <div class="mb-3">
+                    <label for="deporteCancha" class="form-label">Deporte</label>
+                    <input type="text" class="form-control" th:field="*{deporteCancha}" th:errorClass="'is-invalid'" placeholder="Deporte de la Cancha">
+                    <div class="invalid-feedback" th:if="${#fields.hasErrors('deporteCancha')}" th:errors="*{deporteCancha}"></div>
+                </div>
+                <div class="mb-3">
+                    <label for="ubicacionCancha" class="form-label">Ubicación</label>
+                    <input type="text" class="form-control" th:field="*{ubicacionCancha}" th:errorClass="'is-invalid'" placeholder="Ubicación de la Cancha">
+                    <div class="invalid-feedback" th:if="${#fields.hasErrors('ubicacionCancha)}" th:errors="*{ubicacionCancha}"></div>
+                </div>
+                <div class="mb-3">
+                    <label for="materialCancha" class="form-label">Material</label>
+                    <input type="text" class="form-control" th:field="*{materialCancha}" th:errorClass="'is-invalid'" placeholder="Material de la Cancha">
+                    <div class="invalid-feedback" th:if="${#fields.hasErrors('materialCancha')}" th:errors="*{materialCancha}"></div>
+                </div>
+                <div class="mb-3">
+                    <label for="dimensionesCancha" class="form-label">Dimensiones</label>
+                    <input type="text" class="form-control" th:field="*{dimensionesCancha}" th:errorClass="'is-invalid'" placeholder="Dimensiones de la Cancha">
+                    <div class="invalid-feedback" th:if="${#fields.hasErrors('dimensionesCancha')}" th:errors="*{dimensionesCancha}"></div>
+                </div>
+                
+                <div>
+                    <button type="submit" class="btn btn-primary">Crear</button>
+                </div>
+
+            </form>
+    </section>
+    
+    <script th:fragment="script">
+        $(document).ready(function() {
+            $('.select2').select2({
+                placeholder: 'Seleccione una opción',
+                allowClear: true,
+                width: '100%',
+            });
+        });
+    </script>
+    
+    
+    <!--FOOTER-->
+    <footer>
+        <p>Desarrollado por Grupo 7 | Todos los derechos reservados</p>
+        <p>PoloTic | Posadas, Misiones | 2022</p>
+    </footer>
