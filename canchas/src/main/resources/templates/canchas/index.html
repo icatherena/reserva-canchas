@@ -1,0 +1,87 @@
+    <!--ENCABEZADO-->
+    <header th:fragment="header">
+        <section class="enlaces-header">
+            <h1>Vista de Administrador</h1>
+        </section>
+        <section sec:authorize="isAuthenticated()">
+            <form class="btn-log-out" th:action="@{/logout}" method="POST">
+                <button type="submit" onclick="return confirm('¿Seguro de cerrar sesión?')">
+                    Cerrar sesión
+                </button>
+            </form>
+        </section>
+    </header>
+    
+    <!--CUERPO-->
+
+    <!--FORMULARIO-->
+
+    <section class="contenedor-form-cancha" th:fragment="contenido">
+        <!--
+        <div class="row">
+            <div th:if="${exito}" class="alert alert-success alert-dismissible fade show">
+                <span th:text="${exito}"></span>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            <div th:if="${error}" class="alert alert-danger alert-dismissible fade show">
+                <span th:text="${error}"></span>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        </div> -->
+
+
+        <div class="row mb-3">
+            <div class="col h3">Listado de Canchas</div>
+            <a href="../crearCancha/index.html" class="col-auto btn btn-lg btn-success"> <!--REVISAR <a href> ¿es a la ruta del html?-->
+                <i class='bx bx-plus bx-xs'></i>
+            </a>
+        </div>
+
+        <table id="canchas" class="display" style="width:100%">
+            <thead>
+                <tr>
+                    <th>Deporte</th>
+                    <th>Ubicación</th>
+                    <th>Material</th>
+                    <th>Dimensiones</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="c : ${canchas}">
+                    <td th:text="${c.deporteCancha}"></td>
+                    <td th:text="${c.ubicacionCancha}"></td>
+                    <td th:text="${c.materialCancha}"></td>
+                    <td th:text="${c.dimensionesCancha}"></td>
+                    <td>
+                        <a class="btn btn-primary" th:href="@{'canchas/{id}' (id=${c.id})}">
+                            <i class='bx bx-file-find bx-xs' ></i>
+                        </a>
+
+                        <a class="btn btn-secondary" th:href="@{'/canchas/editar/{id}' (id=${c.id})}">
+                            <i class='bx bx-edit-alt bx-xs'></i>
+                        </a>
+
+                        <form class="d-inline" th:action="@{'/canchas/{id}' (id=${c.id})}" th:method="DELETE">
+                            <button type="submit" class="btn btn-danger" onclick="return confirm('¿Está seguro de eliminar la Cancha?')">
+                                <i class='bx bx-trash bx-xs'></i>
+                            </button>
+                        </form>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+    </section>
+
+    <script th:fragment="script">
+        $(document).ready(function() {
+            $('#complejosDeportivos').DataTable();
+        } );
+    </script>    
+
+    <!--FOOTER-->
+        <footer>
+            <p>Desarrollado por Grupo 7 | Todos los derechos reservados</p>
+            <p>PoloTic | Posadas, Misiones | 2022</p>
+        </footer>
