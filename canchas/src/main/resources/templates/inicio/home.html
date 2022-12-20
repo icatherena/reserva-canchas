@@ -32,7 +32,7 @@ xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/s
             <a href="#soporte">Soporte</a>
         </section>
         <section class="btn-log-in" sec:authorize="isAnonymous()">
-            <a href="log-in/login.html">Acceder</a>
+            <a href="/login">Acceder</a>
         </section>
     </header>
 
@@ -67,6 +67,8 @@ xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/s
                 </div>
             </section>
         </section>
+
+        <script th:fragment="script"></script>
 
     <!--FOOTER-->
         <footer>
