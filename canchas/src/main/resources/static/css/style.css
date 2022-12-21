@@ -276,7 +276,7 @@ header {
 }
 
 .log-in-container {
-    height: 22em;
+    height: 24em;
     width: 60em;
     margin: 6em auto;
     display: flex;
@@ -287,7 +287,7 @@ header {
 }
 
 .sign-up-container {
-    height: 20em;
+    height: 29em;
     width: 26em;
     margin: 6em auto;
     display: flex;
@@ -314,7 +314,13 @@ header {
 .title {
     font-size: 2rem;
     font-weight: 600;
-    margin-bottom: .5em;
+    margin: .5em;
+}
+
+.title-sign-up {
+    font-size: 2rem;
+    font-weight: 600;
+    margin-top: .5em;
 }
 
 .enlace-sign-up {
@@ -345,7 +351,7 @@ label {
 }
 
 .input-container {
-    height: 50%;
+    height: auto;
     width: 80%;
     display: flex;
     flex-direction: column;
@@ -354,11 +360,12 @@ label {
 }
 
 .input-container-sign-up {
-    height: 60%;
+    height: auto;
     width: 90%;
+    margin-bottom: 1em;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: space-evenly;
     align-items: center;
 }
 
@@ -396,6 +403,7 @@ label {
 
 .btn:hover {
     border: #fff;
+    color: var(--old-white);
     background-color: var(--hover-green);
 }
 

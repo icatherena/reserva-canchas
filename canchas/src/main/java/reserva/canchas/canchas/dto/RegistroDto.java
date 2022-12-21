@@ -10,6 +10,10 @@ import lombok.*;
 public class RegistroDto {
 
     @NotNull
+    @NotEmpty(message = "Ingrese un nombre de usuario")
+    private String usuario;
+
+    @NotNull
     @NotEmpty(message = "Ingrese una dirección de correo electrónico")
     @Email(message = "Ingrese una dirección de correo electrónico válida")
     private String email;

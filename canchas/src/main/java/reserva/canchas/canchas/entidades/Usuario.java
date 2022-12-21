@@ -17,7 +17,7 @@ import lombok.*;
 public class Usuario {
  
   @Id
-  @GeneratedValue
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
   private int id;
   
   @NotNull
@@ -31,7 +31,7 @@ public class Usuario {
   @Column(unique = true)
   private String email;
   
-  @OneToMany
+  @ManyToOne
   @JsonBackReference
   @NotNull
   private Rol rol; //No puede usarse lista para el servicio
