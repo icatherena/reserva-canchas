@@ -22,9 +22,9 @@ public class Cancha {
   @GeneratedValue
   private int id;
   
-  private String ubicacion;
+  private String ubicacionCancha;
   private String tamaño;
-  private String material;
+  private String materialCancha;
   
   @OneToOne
   private Deporte deporte;
@@ -43,7 +43,7 @@ public class Cancha {
       alquiler.setCancha(this);
       
       // Calcula el monto del alquiler según las fechas de alquiler y el tamaño y tipo del Cancha
-      alquiler.setCantidad(calcularCantidad(fechaInicio, fechaFin, tamaño, material));
+      alquiler.setCantidad(calcularCantidad(fechaInicio, fechaFin, tamaño, materialCancha));
       
       alquileres.add(alquiler);
       return alquiler;
@@ -52,30 +52,30 @@ public class Cancha {
     }
   }
 
-  private int calcularCantidad(Date fechaInicio, Date fechaFin, String tamaño, String material) {
+  private int calcularCantidad(Date fechaInicio, Date fechaFin, String tamaño, String materialCancha) {
     long diff = fechaFin.getTime() - fechaInicio.getTime();
     int numMinutes = (int) (diff / (60 * 1000));  // Calcula el numero de minutos
   
     if (tamaño.equals("pequeño")) {
-      if (material.equals("grama")) {
+      if (materialCancha.equals("grama")) {
         return (numMinutes * 10) / 60;  // Divide el monto del alquiler existente por 60 para obtener la tarifa por minuto
-      } else if (material.equals("cemento")) {
+      } else if (materialCancha.equals("cemento")) {
         return (numMinutes * 15) / 60;
       } else {
         return (numMinutes * 20) / 60;
       }
     } else if (tamaño.equals("mediano")) {
-      if (material.equals("grama")) {
+      if (materialCancha.equals("grama")) {
         return (numMinutes * 15) / 60;
-      } else if (material.equals("cemento")) {
+      } else if (materialCancha.equals("cemento")) {
         return (numMinutes * 20) / 60;
       } else {
         return (numMinutes * 25) / 60;
       }
     } else {
-      if (material.equals("grama")) {
+      if (materialCancha.equals("grama")) {
         return (numMinutes * 20) / 60;
-      } else if (material.equals("cemento")) {
+      } else if (materialCancha.equals("cemento")) {
         return (numMinutes * 25) / 60;
       } else {
         return (numMinutes * 30) / 60;

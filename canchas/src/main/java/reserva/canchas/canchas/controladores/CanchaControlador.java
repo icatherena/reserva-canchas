@@ -75,9 +75,9 @@ public class CanchaControlador implements WebMvcConfigurer {
     public ModelAndView editar(@PathVariable("id") int id, Cancha cancha) {
         Cancha canchaAEditar = canchaServicio.getById(id);
         cancha.setId(canchaAEditar.getId());
-        cancha.setUbicacion(canchaAEditar.getUbicacion());
+        cancha.setUbicacionCancha(canchaAEditar.getUbicacionCancha());
         cancha.setDeporte(canchaAEditar.getDeporte());
-        cancha.setMaterial(canchaAEditar.getMaterial());
+        cancha.setMaterialCancha(canchaAEditar.getMaterialCancha());
         cancha.setTamaño(canchaAEditar.getTamaño());
         return this.editar(id, cancha);
     }

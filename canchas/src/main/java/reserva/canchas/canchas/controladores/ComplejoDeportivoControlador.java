@@ -77,8 +77,8 @@ public class ComplejoDeportivoControlador implements WebMvcConfigurer {
     public ModelAndView editar(@PathVariable("id") int id, ComplejoDeportivo complejoDeportivo) {
         ComplejoDeportivo complejoDeportivoAEditar = complejoDeportivoServicio.getById(id);
         complejoDeportivo.setId(complejoDeportivoAEditar.getId());
-        complejoDeportivo.setNombre(complejoDeportivoAEditar.getNombre());
-        complejoDeportivo.setUbicacion(complejoDeportivoAEditar.getUbicacion());
+        complejoDeportivo.setNombreComplejo(complejoDeportivoAEditar.getNombreComplejo());
+        complejoDeportivo.setUbicacionComplejo(complejoDeportivoAEditar.getUbicacionComplejo());
         complejoDeportivo.setDeportes(complejoDeportivoAEditar.getDeportes());
         complejoDeportivo.setCanchas(complejoDeportivoAEditar.getCanchas()); //Esta declarado en Complejo, corresponde?
         return this.editar(id, complejoDeportivo);

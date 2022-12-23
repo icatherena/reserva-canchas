@@ -14,10 +14,11 @@ import reserva.canchas.canchas.entidades.Alquiler;
 import reserva.canchas.canchas.servicios.AlquilerServicio;
 import reserva.canchas.canchas.servicios.UsuarioServicio;
 import reserva.canchas.canchas.servicios.CanchaServicio;
+import reserva.canchas.canchas.servicios.DeporteServicio;
 import reserva.canchas.canchas.servicios.ComplejoDeportivoServicio;
 
 @RestController
-@RequestMapping("/reservas")
+@RequestMapping("/alquileres")
 public class AlquilerControlador implements WebMvcConfigurer {
   
   @Autowired
@@ -25,6 +26,9 @@ public class AlquilerControlador implements WebMvcConfigurer {
 
   @Autowired
   private ComplejoDeportivoServicio complejoDeportivoServicio;
+
+  @Autowired
+  private DeporteServicio deporteServicio;
 
   @Autowired
   private CanchaServicio canchaServicio;
@@ -58,12 +62,15 @@ public class AlquilerControlador implements WebMvcConfigurer {
     maw.setViewName("fragments/base");
     maw.addObject("titulo", "Crear alquiler");
     maw.addObject("vista", "alquileres/crear");
+    maw.addObject("complejosDeportivos", complejoDeportivoServicio.getAll());
+    maw.addObject("deportes", deporteServicio.getAll());
+    maw.addObject("canchas", canchaServicio.getAll());
     // Add any necessary model attributes here
     return maw;
   }
   
   @PostMapping("/crear")
-  public ModelAndView guardar(Alquiler alquiler, BindingResult bindingResult) {
+  public ModelAndView guardar(@Valid Alquiler alquiler, BindingResult bindingResult) {
     ModelAndView maw = new ModelAndView();
     if (bindingResult.hasErrors()) {
       maw.setViewName("fragments/base");
@@ -75,7 +82,7 @@ public class AlquilerControlador implements WebMvcConfigurer {
     
     alquilerServicio.save(alquiler);
     //TODO resolver hacia donde redireccionar
-    maw.setViewName("redirect:/api/alquileres");
+  //  maw.setViewName("redirect:/api/alquileres");
     return maw;
   }
   
@@ -86,15 +93,7 @@ public class AlquilerControlador implements WebMvcConfigurer {
   * El objeto Alquiler que se está editando, con sus propiedades rellenadas previamente en los campos del formulario */
   @GetMapping("/editar/{id}")
   public ModelAndView editar(@PathVariable("id") int id, Alquiler alquiler) {
-    Alquiler alquilerAEditar = alquilerServicio.getById(id);
-    alquiler.setId(alquilerAEditar.getId());
-    alquiler.setFechaInicio(alquilerAEditar.getFechaInicio());
-    alquiler.setFechaFin(alquilerAEditar.getFechaFin());
-    alquiler.setCantidad(alquilerAEditar.getCantidad());
-    alquiler.setCancha(alquilerAEditar.getCancha());
-    alquiler.setUsuario(alquilerAEditar.getUsuario());
-    alquiler.setComplejo(alquilerAEditar.getComplejo());
-    return this.editar(id, alquiler);
+    return this.editar(id, alquiler, true);
   }
   
   public ModelAndView editar(@PathVariable("id") int id, Alquiler alquiler, boolean estaPersistido) {
@@ -102,20 +101,36 @@ public class AlquilerControlador implements WebMvcConfigurer {
     maw.setViewName("fragments/base");
     maw.addObject("titulo", "Editar alquiler");
     maw.addObject("vista", "alquileres/editar");
-    maw.addObject("alquiler", alquiler);
-    maw.addObject("canchas", canchaServicio.getAll()); //TODO crear el crud de canchaServicio
+  //  maw.addObject("alquiler", alquiler);
+    maw.addObject("canchas", canchaServicio.getAll()); 
     maw.addObject("usuarios", usuarioServicio.getAll());
-    maw.addObject("complejos", complejoDeportivoServicio.getAll()); //TODO crear el crud de complejoServicio
+    maw.addObject("complejos", complejoDeportivoServicio.getAll()); 
+    maw.addObject("deportes", deporteServicio.getAll());
+    
+    if (estaPersistido) {
+      maw.addObject("alquiler", alquilerServicio.getById(id));
+    }
     return maw;
   }
   
   @PutMapping("/editar/{id}")
-  public ModelAndView guardar(@Valid Alquiler alquiler, BindingResult br, RedirectAttributes ra) {
+  public ModelAndView guardar(@PathVariable("id") int id, @Valid Alquiler alquiler, BindingResult br, RedirectAttributes ra) {
     if (br.hasErrors()) {
-      return this.editar(alquiler.getId(), alquiler, false);
+      return this.editar(id, alquiler, false);
     }
-    alquilerServicio.save(alquiler);
+    
+    Alquiler alquilerAEditar = alquilerServicio.getById(id);
+    alquiler.setId(alquilerAEditar.getId());
+    alquiler.setFechaInicio(alquilerAEditar.getFechaInicio());
+    alquiler.setFechaFin(alquilerAEditar.getFechaFin());
+    alquiler.setDeporte(alquilerAEditar.getDeporte());
+    alquiler.setCancha(alquilerAEditar.getCancha());
+    alquiler.setUsuario(alquilerAEditar.getUsuario());
+    alquiler.setComplejoDeportivo(alquilerAEditar.getComplejoDeportivo());
+
     ModelAndView maw = this.index();
+    
+    alquilerServicio.save(alquiler);
     maw.addObject("exito", "Reserva modificada exitosamente");
     return maw;
   }

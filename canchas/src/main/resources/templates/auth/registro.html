@@ -15,7 +15,7 @@
             <form class="input-container-sign-up" th:action="@{/registro}" th:object="${registroDto}" method="POST">
                 
                 <label for="usuario">Usuario</label>
-                <input class="input" type="text" placeholder="Usuario">
+                <input class="input" type="text" id="usuario" th:field="*{usuario}" placeholder="Usuario">
                 <div class="invalid-feedback" th:if="${#fields.hasErrors('usuario')}" th:errors="*{usuario}"></div>
 
 
@@ -24,7 +24,7 @@
                 <div class="invalid-feedback" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></div>
                 
                 <label for="contraseña">Contraseña</label>
-                <input class="input" type="password" placeholder="Contraseña">
+                <input class="input" type="password" id="contraseña" th:field="*{contraseña}" placeholder="Contraseña">
                 <div class="invalid-feedback" th:if="${#fields.hasErrors('contraseña')}" th:errors="*{contraseña}"></div>
             
                 <label for="confirmar">Repita la contraseña</label>

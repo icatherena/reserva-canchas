@@ -96,14 +96,15 @@ header {
 }
 
 .btn-log-out {
-    padding: 1.5em 3em;
+    padding: 0;
     display: flex;
     justify-content: flex-end;
     align-items: center;
 }
 
 .btn-log-out button {
-    width:100%;
+    padding: 1.5em 3em;
+    width: 9em;
     height:2.4em;
     text-decoration: none;
     border-radius: 1em;
@@ -375,7 +376,7 @@ label {
     font-size: .8rem;
 }
 
-.input {
+.input, select, option {
     padding-left: 1rem;
     border: none;
     border-radius: 0.5rem;
@@ -383,7 +384,7 @@ label {
     box-sizing: border-box;
 }
 
-.input:hover {
+.input, select, option:hover {
     border: 2px solid var(--hover-blue);
 }
 
@@ -480,6 +481,51 @@ select, label {
     background-color: var(--contenedor) 
 }
 
+.btn-crear{
+    margin-top: 0;
+    padding: .5em;
+    width: 3em;
+}
+
+.btn-editar {
+    margin-top: 0;
+    padding: .5em;
+    width: 3em;
+}
+
+/*------FORMULARIO CREAR RESERVA-------*/
+
+.contenedor-form-crear {
+    height: auto;
+    width: 40em;
+    margin: 7.27em auto;    
+    padding: 2em 4em;
+    display: flex;
+    flex-direction: column;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    box-shadow: 0 0.3rem 0.4rem rgba(0, 0, 0, 0.3);
+    justify-content: space-between;
+    background-color: var(--contenedor) 
+}
+
+.contenedor-form-crear h3 {
+    font-size:larger;
+}
+
+.contenedor-form-crear label {
+    margin-bottom: 1em;
+    margin-top: .5em;
+    margin-right: .5em;
+    color: var(--black);
+}
+
+.btn-buscar{
+    margin-top: 0;
+    padding: .5em 1em;
+    width: fit-content;
+}
+
 /*-------FORMULARIO EDITAR RESERVA---------*/
 
 .contenedor-form-editar {
@@ -499,11 +545,18 @@ select, label {
 
 .contenedor-form-editar h3 {
     font-size:larger;
-    margin-bottom: .5em;
 }
 
 .contenedor-form-editar label {
-    margin-bottom: .5em;
+    margin-bottom: 1.5em;
+    margin-top: 1em;
+    margin-right: 1em;
+    color: var(--black);
+}
+
+.btn-modificar {
+    width:fit-content;
+    padding: 0 1em;
 }
 
 /*-----FORMULARIO VER RESERVA-----*/
@@ -524,6 +577,10 @@ select, label {
 
 .p1 {
     padding-top: .5em;
+}
+
+.identificador-lista {
+    display: flex;
 }
 
 /*FORMULARIO CREAR/LISTA/EDITAR COMPLEJO*/

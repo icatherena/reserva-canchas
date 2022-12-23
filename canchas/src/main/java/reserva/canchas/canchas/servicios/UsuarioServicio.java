@@ -67,8 +67,14 @@ public class UsuarioServicio implements UserDetailsService {
         usuarioRepositorio.save(usuario);
     }
 
-    public Object getAll() {
+/*    public Object getAll() {
         return null;
-    }
+    } */
 
+    public List<Usuario> getAll()
+    {
+        List<Usuario> lista = new ArrayList<Usuario>();
+        lista = (ArrayList<Usuario>) usuarioRepositorio.findAll();
+        return lista;
+    }
 }

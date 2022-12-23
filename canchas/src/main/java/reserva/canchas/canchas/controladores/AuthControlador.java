@@ -46,7 +46,7 @@ public class AuthControlador {
 
     @GetMapping({"/loginSuccess"})
     public RedirectView loginCheck(){
-        return new RedirectView("/");
+        return new RedirectView("/alquileres");
     }
     
     @GetMapping("/registro")
@@ -68,6 +68,7 @@ public class AuthControlador {
 		}
 
         Usuario u = new Usuario();
+        u.setNombreUsuario(registroDto.getUsuario());
         u.setEmail(registroDto.getEmail());
         u.setContraseña(codificador.encode(registroDto.getContraseña()));
         u.setRol(rolRepositorio.findByNombre("Usuario").orElseThrow(() -> new IllegalArgumentException("Error al crear usuario")));

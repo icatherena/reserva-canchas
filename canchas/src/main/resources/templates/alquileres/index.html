@@ -1,0 +1,93 @@
+    <!--ENCABEZADO-->
+    <header th:fragment="header">
+        <section class="enlaces-header">
+            <h1>Gestor de reservas</h1>
+        </section>
+        <section sec:authorize="isAuthenticated()">
+            <form class="btn-log-out" th:action="@{/logout}" method="POST">
+                <button type="submit" onclick="return confirm('¿Está seguro de cerrar sesión?')">
+                    Cerrar sesión
+                </button>
+            </form>
+        </section>
+    </header>
+    
+    <!--CUERPO-->
+
+    <!--FORMULARIO-->
+
+    <section th:fragment="contenido">
+        <section class="contenedor-form" >
+            
+            <div class="row">
+                
+                <div th:if="${exito}" class="alert alert-success alert-dismissible fade show">
+                    <span th:text="${exito}"></span>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+                <div th:if="${error}" class="alert alert-danger alert-dismissible fade show">
+                    <span th:text="${error}"></span>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+    
+    
+            <div class="row mb-3">
+                <div class="col h3">Listado de Reservas</div>
+                <a href="/alquileres/crear" class="col-auto btn btn-lg btn-success btn-crear">
+                    <i class='bx bx-plus bx-xs'></i>
+                </a>
+            </div>
+    
+            <table id="alquileres" class="display" style="width:100%">
+                <thead>
+                    <tr>
+                        <th>Ubicación del Complejo</th>
+                        <th>Deporte</th>
+                        <th>Material de la Cancha</th>
+                        <th>Inicio</th>
+                        <th>Fin</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="a : ${alquileres}">
+                        <td th:text="${a.complejoDeportivo.ubicacionComplejo}"></td>
+                        <td th:text="${a.deporte.nombre}"></td>
+                        <td th:text="${a.cancha.materialCancha}"></td>
+                        <td th:text="${#dates.format(a.fechaInicio, 'dd/MM/yyyy')}"></td>
+                        <td th:text="${#dates.format(a.fechaFin, 'dd/MM/yyyy')}"></td>
+                        <td>
+                            <a class="btn btn-primary btn-editar" th:href="@{'alquileres/{id}' (id=${a.id})}">
+                                <i class='bx bx-file-find bx-xs' ></i>
+                            </a>
+    
+                            <a class="btn btn-secondary btn-editar" th:href="@{'/alquileres/editar/{id}' (id=${a.id})}">
+                                <i class='bx bx-edit-alt bx-xs'></i>
+                            </a>
+    
+                            <form class="d-inline " th:action="@{'/alquileres/{id}' (id=${a.id})}" th:method="DELETE">
+                                <button type="submit" class="btn btn-danger btn-editar" onclick="return confirm('¿Está seguro de eliminar el Deporte?')">
+                                    <i class='bx bx-trash bx-xs'></i>
+                                </button>
+                            </form>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+    
+        </section>
+    
+    <!--FOOTER-->
+    <footer>
+        <p>Desarrollado por Grupo 7 | Todos los derechos reservados</p>
+        <p>PoloTic | Posadas, Misiones | 2022</p>
+    </footer>
+    
+    </section>
+    
+    <script th:fragment="script">
+        $(document).ready(function() {
+            $('#alquileres').DataTable();
+        } );
+    </script>    
+

@@ -19,8 +19,8 @@ public class ComplejoDeportivo {
   @GeneratedValue
   private int id;
   
-  private String ubicacion;
-  private String nombre;
+  private String ubicacionComplejo;
+  private String nombreComplejo;
   
   @OneToMany
   private List<Deporte> deportes;
