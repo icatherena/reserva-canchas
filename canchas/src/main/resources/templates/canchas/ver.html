@@ -16,25 +16,32 @@
 
     <!--FORMULARIO-->
 
-    <section class="contenedor-form-cancha" th:fragment="contenido">
-        <div class="card-header h3" th:text="${cancha.nombre}"></div>
-            <p class="p1">
-                <span class="fw-bold">Deporte de la Cancha:</span>
-                <span th:text="${cancha.deporteCancha}"></span>
-            </p>
-            <p>
-                <span class="fw-bold">Ubicación de la Cancha:</span>
-                <span th:text="${cancha.ubicacionCancha}"></span>
-            </p>
-            <p>
-                <span class="fw-bold">Material de la Cancha:</span> <!--DEBERÍA MOSTRAR UN COMBOBOX?-->
-                <span th:text="${cancha.materialCancha"></span>
-            </p>  
-            <p>
-                <span class="fw-bold">Dimensiones de la Cancha:</span>
-                <span th:text="${cancha.dimensionesCancha"></span>
-            </p>                 
-        </div>
+    <section th:fragment="contenido">
+        <section class="contenedor-form-cancha">
+            <div>
+                <div class="identificador-lista">
+                    <h3>Cancha #</h3>
+                    <h3 th:text="${cancha.id}"></h3>
+                </div>
+                <p class="p1">
+                    <span class="fw-bold">Deporte de la Cancha:</span>
+                    <span th:text="${cancha.deporte.nombre}"></span>
+                </p>
+                <p>
+                    <span class="fw-bold">Ubicación de la Cancha:</span>
+                    <span th:text="${cancha.ubicacionCancha}"></span>
+                </p>
+                <p>
+                    <span class="fw-bold">Material de la Cancha:</span> <!--DEBERÍA MOSTRAR UN COMBOBOX?-->
+                    <span th:text="${cancha.materialCancha}"></span>
+                </p>  
+            <!--    <p>
+                    <span class="fw-bold">Dimensiones de la Cancha:</span>
+                    <span th:text="${cancha.dimensionesCancha"></span>
+                </p> -->
+            </div>
+                    
+        </section>
 
         <!--FOOTER-->
         <footer>

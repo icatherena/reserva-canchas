@@ -67,13 +67,10 @@ public class UsuarioServicio implements UserDetailsService {
         usuarioRepositorio.save(usuario);
     }
 
-<<<<<<< HEAD
 /*    public Object getAll() {
         return null;
     } */
 
-=======
->>>>>>> d8dd018093ff1e9eb6da230cb2e576078edabfe5
     public List<Usuario> getAll()
     {
         List<Usuario> lista = new ArrayList<Usuario>();

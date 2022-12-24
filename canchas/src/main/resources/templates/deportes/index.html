@@ -16,55 +16,64 @@
 
     <!--FORMULARIO-->
 
-    <section class="contenedor-form-deporte" th:fragment="contenido">
-        <!--
-        <div class="row">
-            <div th:if="${exito}" class="alert alert-success alert-dismissible fade show">
-                <span th:text="${exito}"></span>
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    <section th:fragment="contenido">
+        <section class="contenedor-form-deporte">
+        
+            <div class="row">
+                <div th:if="${exito}" class="alert alert-success alert-dismissible fade show">
+                    <span th:text="${exito}"></span>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+                <div th:if="${error}" class="alert alert-danger alert-dismissible fade show">
+                    <span th:text="${error}"></span>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            </div> 
+    
+    
+            <div class="row mb-3">
+                <div class="col h3">Listado de Deportes</div>
+                <a href="/deportes/crear" class="col-auto btn btn-lg btn-success btn-crear">
+                    <i class='bx bx-plus bx-xs'></i>
+                </a>
             </div>
-            <div th:if="${error}" class="alert alert-danger alert-dismissible fade show">
-                <span th:text="${error}"></span>
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div>
-        </div> -->
+    
+            <table id="deportes" class="display" style="width:100%">
+                <thead>
+                    <tr>
+                        <th>Deporte</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="d : ${deportes}">
+                        <td th:text="${d.nombre}"></td>
+                        <td>
+                            <a class="btn btn-primary btn-editar" th:href="@{'deportes/{id}' (id=${d.id})}">
+                                <i class='bx bx-file-find bx-xs' ></i>
+                            </a>
+    
+                            <a class="btn btn-secondary btn-editar" th:href="@{'/deportes/editar/{id}' (id=${d.id})}">
+                                <i class='bx bx-edit-alt bx-xs'></i>
+                            </a>
+    
+                            <form class="d-inline" th:action="@{'/deportes/{id}' (id=${d.id})}" th:method="DELETE">
+                                <button type="submit" class="btn btn-danger btn-editar" onclick="return confirm('¿Está seguro de eliminar el Deporte?')">
+                                    <i class='bx bx-trash bx-xs'></i>
+                                </button>
+                            </form>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+    
+        </section>
 
-
-        <div class="row mb-3">
-            <div class="col h3">Listado de Deportes</div>
-            <a href="../crearDeporte/index.html" class="col-auto btn btn-lg btn-success"> <!--REVISAR <a href>-->
-                <i class='bx bx-plus bx-xs'></i>
-            </a>
-        </div>
-
-        <table id="deportes" class="display" style="width:100%">
-            <thead>
-                <tr>
-                    <th>Deporte</th>
-                    <th>Acciones</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr th:each="d : ${deportes}">
-                    <td th:text="${d.nombreDeporte}"></td>
-                    <td>
-                        <a class="btn btn-primary" th:href="@{'deportes/{id}' (id=${d.id})}">
-                            <i class='bx bx-file-find bx-xs' ></i>
-                        </a>
-
-                        <a class="btn btn-secondary" th:href="@{'/deportes/editar/{id}' (id=${d.id})}">
-                            <i class='bx bx-edit-alt bx-xs'></i>
-                        </a>
-
-                        <form class="d-inline" th:action="@{'/deportes/{id}' (id=${d.id})}" th:method="DELETE">
-                            <button type="submit" class="btn btn-danger" onclick="return confirm('¿Está seguro de eliminar el Deporte?')">
-                                <i class='bx bx-trash bx-xs'></i>
-                            </button>
-                        </form>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+        <!--FOOTER-->
+        <footer>
+            <p>Desarrollado por Grupo 7 | Todos los derechos reservados</p>
+            <p>PoloTic | Posadas, Misiones | 2022</p>
+        </footer>
 
     </section>
 
@@ -72,10 +81,4 @@
         $(document).ready(function() {
             $('#deportes').DataTable();
         } );
-    </script>    
-
-    <!--FOOTER-->
-        <footer>
-            <p>Desarrollado por Grupo 7 | Todos los derechos reservados</p>
-            <p>PoloTic | Posadas, Misiones | 2022</p>
-        </footer>
+    </script>

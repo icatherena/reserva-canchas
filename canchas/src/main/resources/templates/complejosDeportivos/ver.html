@@ -16,27 +16,34 @@
 
     <!--FORMULARIO-->
 
-    <section class="contenedor-form-complejo" th:fragment="contenido">
-        <div class="card-header h3" th:text="${complejoDeportivo.nombre}"></div>
-            <p class="p1">
-                <span class="fw-bold">Nombre del Complejo:</span>
-                <span th:text="${complejoDeportivo.nombre}"></span>
-            </p>
-            <p>
-                <span class="fw-bold">Ubicación del Complejo:</span>
-                <span th:text="${complejoDeportivo.ubicacion}"></span>
-            </p>
-            <p>
-                <span class="fw-bold">Deporte del Complejo:</span> <!--DEBERÍA MOSTRAR UN COMBOBOX?-->
-                <span th:text="${complejoDeportivo.deporteComplejo}"></span>
-            </p>                 
-        </div>
+    <section th:fragment="contenido">
+        <section class="contenedor-form-complejo">
+            <div>
+                <div class="identificador-lista">
+                    <h3>Complejo Deportivo #</h3>
+                    <h3 th:text="${complejoDeportivo.id}"></h3>
+                </div>
+                <p class="p1">
+                    <span class="fw-bold">Nombre del Complejo:</span>
+                    <span th:text="${complejoDeportivo.nombre}"></span>
+                </p>
+                <p>
+                    <span class="fw-bold">Ubicación del Complejo:</span>
+                    <span th:text="${complejoDeportivo.ubicacion}"></span>
+                </p>
+                <p>
+                    <span class="fw-bold">Deporte del Complejo:</span> <!--DEBERÍA MOSTRAR UN COMBOBOX?-->
+                    <span th:text="${complejoDeportivo.deporte.nombre}"></span>
+                </p>                 
+            </div>
+        </section>
+
+        <!--FOOTER-->
+        <footer>
+            <p>Desarrollado por Grupo 7 | Todos los derechos reservados</p>
+            <p>PoloTic | Posadas, Misiones | 2022</p>
+        </footer>
+
     </section>
 
     <script th:fragment="script"></script>
-
-    <!--FOOTER-->
-    <footer>
-        <p>Desarrollado por Grupo 7 | Todos los derechos reservados</p>
-        <p>PoloTic | Posadas, Misiones | 2022</p>
-    </footer>

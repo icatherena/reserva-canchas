@@ -17,7 +17,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 public class RolControlador implements WebMvcConfigurer {
     
     @Autowired
-    RolServicio rolServicio;
+    RolServicio rolServicio; 
 
     @GetMapping
     private ModelAndView index()

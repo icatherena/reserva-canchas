@@ -24,10 +24,10 @@
                 <!--COMPLEJO-->
                 <h3>Selecciona el complejo</h3>
                     <div class="col-12">
-                        <label for="complejoDeportivo" class="form-label">Dirección</label>
+                        <label for="complejoDeportivo" class="form-label">Ubicación</label>
                         <select id="complejoDeportivo" th:field="*{complejoDeportivo}" th:errorClass="'is-invalid'">
                             <option selected value=""></option>
-                            <option th:each="c : ${complejosDeportivos}" th:value="${d.id}" th:text="${c.ubicacionComplejo}"></option>
+                            <option th:each="c : ${complejosDeportivos}" th:value="${c.id}" th:text="${c.ubicacionComplejo}"></option>
                         </select>
                     </div>
     

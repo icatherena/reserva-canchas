@@ -51,7 +51,7 @@ public class DeporteControlador implements WebMvcConfigurer {
     }
 
     @PostMapping("/crear")
-    public ModelAndView guardar(Deporte deporte, BindingResult bindingResult) {
+    public ModelAndView guardar(@Valid Deporte deporte, BindingResult bindingResult) {
         ModelAndView maw = new ModelAndView();
         if (bindingResult.hasErrors()) {
             maw.setViewName("fragments/base");
@@ -63,16 +63,13 @@ public class DeporteControlador implements WebMvcConfigurer {
         
         deporteServicio.save(deporte);
         //TODO resolver hacia donde redireccionar
-        maw.setViewName("redirect:/api/deportes");
+        //maw.setViewName("redirect:/api/deportes");
         return maw;
     }
 
     @GetMapping("/editar/{id}")
     public ModelAndView editar(@PathVariable("id") int id, Deporte deporte) {
-        Deporte deporteAEditar = deporteServicio.getById(id);
-        deporte.setId(deporteAEditar.getId());
-        deporte.setNombre(deporteAEditar.getNombre());
-        return this.editar(id, deporte);
+        return this.editar(id, deporte, true);
     }
     
     public ModelAndView editar(@PathVariable("id") int id, Deporte deporte, boolean estaPersistido) {
@@ -80,17 +77,27 @@ public class DeporteControlador implements WebMvcConfigurer {
         maw.setViewName("fragments/base");
         maw.addObject("titulo", "Editar Deporte");
         maw.addObject("vista", "deportes/editar");
-        maw.addObject("deporte", deporte);
+        //maw.addObject("deporte", deporte);
+
+        if (estaPersistido) {
+            maw.addObject("deporte", deporteServicio.getById(id));
+        }
         return maw;
     }
-    
+
     @PutMapping("/editar/{id}")
-    public ModelAndView guardar(@Valid Deporte deporte, BindingResult br, RedirectAttributes ra) {
+    public ModelAndView guardar(@PathVariable("id") int id, @Valid Deporte deporte, BindingResult br, RedirectAttributes ra) {
         if (br.hasErrors()) {
-            return this.editar(deporte.getId(), deporte, false);
+            return this.editar(id, deporte, false);
         }
-        deporteServicio.save(deporte);
+
+        Deporte deporteAEditar = deporteServicio.getById(id);
+        deporte.setId(deporteAEditar.getId());
+        deporte.setNombre(deporteAEditar.getNombre());
+
         ModelAndView maw = this.index();
+        
+        deporteServicio.save(deporte);
         maw.addObject("exito", "Deporte modificado exitosamente");
         return maw;
     }

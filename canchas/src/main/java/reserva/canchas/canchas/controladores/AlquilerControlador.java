@@ -43,7 +43,7 @@ public class AlquilerControlador implements WebMvcConfigurer {
     maw.addObject("titulo", "Listado de alquileres");
     maw.addObject("vista", "alquileres/index");
     maw.addObject("alquileres", alquilerServicio.getAll());
-    return maw;
+    return maw; 
   }
   
   @GetMapping("/{id}")

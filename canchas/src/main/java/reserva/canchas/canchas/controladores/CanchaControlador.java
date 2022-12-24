@@ -50,12 +50,13 @@ public class CanchaControlador implements WebMvcConfigurer {
         maw.setViewName("fragments/base");
         maw.addObject("titulo", "Crear Cancha");
         maw.addObject("vista", "canchas/crear");
+        maw.addObject("deportes", deporteServicio.getAll());
         // Add any necessary model attributes here
         return maw;
     }
     
     @PostMapping("/crear")
-    public ModelAndView guardar(Cancha cancha, BindingResult bindingResult) {
+    public ModelAndView guardar(@Valid Cancha cancha, BindingResult bindingResult) {
         ModelAndView maw = new ModelAndView();
         if (bindingResult.hasErrors()) {
             maw.setViewName("fragments/base");
@@ -67,38 +68,46 @@ public class CanchaControlador implements WebMvcConfigurer {
         
         canchaServicio.save(cancha);
         //TODO resolver hacia donde redireccionar
-        maw.setViewName("redirect:/api/canchas");
+        //maw.setViewName("redirect:/api/canchas");
         return maw;
     }
     
     @GetMapping("/editar/{id}")
     public ModelAndView editar(@PathVariable("id") int id, Cancha cancha) {
-        Cancha canchaAEditar = canchaServicio.getById(id);
-        cancha.setId(canchaAEditar.getId());
-        cancha.setUbicacionCancha(canchaAEditar.getUbicacionCancha());
-        cancha.setDeporte(canchaAEditar.getDeporte());
-        cancha.setMaterialCancha(canchaAEditar.getMaterialCancha());
-        cancha.setTamaño(canchaAEditar.getTamaño());
-        return this.editar(id, cancha);
+        return this.editar(id, cancha, true);
     }
-    
+
     public ModelAndView editar(@PathVariable("id") int id, Cancha cancha, boolean estaPersistido) {
         ModelAndView maw = new ModelAndView();
         maw.setViewName("fragments/base");
         maw.addObject("titulo", "Editar Cancha");
         maw.addObject("vista", "canchas/editar");
-        maw.addObject("cancha", cancha);
+    //    maw.addObject("cancha", cancha);
         maw.addObject("deportes", deporteServicio.getAll());
+        
+        if (estaPersistido) {
+            maw.addObject("cancha", canchaServicio.getById(id));
+        }
         return maw;
     }
     
     @PutMapping("/editar/{id}")
-    public ModelAndView guardar(@Valid Cancha cancha, BindingResult br, RedirectAttributes ra) {
+    public ModelAndView guardar(@PathVariable("id") int id, @Valid Cancha cancha, BindingResult br, RedirectAttributes ra) {
         if (br.hasErrors()) {
-            return this.editar(cancha.getId(), cancha, false);
+            return this.editar(id, cancha, false);
         }
-        canchaServicio.save(cancha);
+        
+        Cancha canchaAEditar = canchaServicio.getById(id);
+        cancha.setId(canchaAEditar.getId());
+        cancha.setUbicacionCancha(canchaAEditar.getUbicacionCancha());
+        cancha.setDeporte(canchaAEditar.getDeporte());
+        cancha.setMaterialCancha(canchaAEditar.getMaterialCancha());
+    //    cancha.setTamaño(canchaAEditar.getTamaño());
+        
         ModelAndView maw = this.index();
+        
+        canchaServicio.save(cancha);
+        
         maw.addObject("exito", "Cancha modificada exitosamente");
         return maw;
     }

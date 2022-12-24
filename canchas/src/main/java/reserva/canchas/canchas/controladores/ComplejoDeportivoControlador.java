@@ -52,12 +52,14 @@ public class ComplejoDeportivoControlador implements WebMvcConfigurer {
         maw.setViewName("fragments/base");
         maw.addObject("titulo", "Crear Complejo");
         maw.addObject("vista", "complejosdeportivos/crear");
+        maw.addObject("deportes", deporteServicio.getAll());
+        maw.addObject("canchas", canchaServicio.getAll());
         // Add any necessary model attributes here
         return maw;
     }
 
     @PostMapping("/crear")
-    public ModelAndView guardar(ComplejoDeportivo complejoDeportivo, BindingResult bindingResult) {
+    public ModelAndView guardar(@Valid ComplejoDeportivo complejoDeportivo, BindingResult bindingResult) {
         ModelAndView maw = new ModelAndView();
         if (bindingResult.hasErrors()) {
             maw.setViewName("fragments/base");
@@ -69,19 +71,13 @@ public class ComplejoDeportivoControlador implements WebMvcConfigurer {
         
         complejoDeportivoServicio.save(complejoDeportivo);
         //TODO resolver hacia donde redireccionar
-        maw.setViewName("redirect:/api/complejosdeportivos");
+        //maw.setViewName("redirect:/api/complejosdeportivos");
         return maw;
     }
 
     @GetMapping("/editar/{id}")
     public ModelAndView editar(@PathVariable("id") int id, ComplejoDeportivo complejoDeportivo) {
-        ComplejoDeportivo complejoDeportivoAEditar = complejoDeportivoServicio.getById(id);
-        complejoDeportivo.setId(complejoDeportivoAEditar.getId());
-        complejoDeportivo.setNombreComplejo(complejoDeportivoAEditar.getNombreComplejo());
-        complejoDeportivo.setUbicacionComplejo(complejoDeportivoAEditar.getUbicacionComplejo());
-        complejoDeportivo.setDeportes(complejoDeportivoAEditar.getDeportes());
-        complejoDeportivo.setCanchas(complejoDeportivoAEditar.getCanchas()); //Esta declarado en Complejo, corresponde?
-        return this.editar(id, complejoDeportivo);
+        return this.editar(id, complejoDeportivo, true); 
     }
     
     public ModelAndView editar(@PathVariable("id") int id, ComplejoDeportivo complejoDeportivo, boolean estaPersistido) {
@@ -89,19 +85,32 @@ public class ComplejoDeportivoControlador implements WebMvcConfigurer {
         maw.setViewName("fragments/base");
         maw.addObject("titulo", "Editar Complejo");
         maw.addObject("vista", "complejosdeportivos/editar");
-        maw.addObject("complejodeportivo", complejoDeportivo);
+    //    maw.addObject("complejodeportivo", complejoDeportivo);
         maw.addObject("deportes", deporteServicio.getAll());
         maw.addObject("canchas", canchaServicio.getAll()); //Idem
+        
+        if (estaPersistido) {
+            maw.addObject("complejoDeportivo", complejoDeportivoServicio.getById(id));
+        }
         return maw;
     }
 
     @PutMapping("/editar/{id}")
-    public ModelAndView guardar(@Valid ComplejoDeportivo complejoDeportivo, BindingResult br, RedirectAttributes ra) {
+    public ModelAndView guardar(@PathVariable("id") int id, @Valid ComplejoDeportivo complejoDeportivo, BindingResult br, RedirectAttributes ra) {
         if (br.hasErrors()) {
-            return this.editar(complejoDeportivo.getId(), complejoDeportivo, false);
+            return this.editar(id, complejoDeportivo, false);
         }
-        complejoDeportivoServicio.save(complejoDeportivo);
+
+        ComplejoDeportivo complejoDeportivoAEditar = complejoDeportivoServicio.getById(id);
+        complejoDeportivo.setId(complejoDeportivoAEditar.getId());
+        complejoDeportivo.setNombreComplejo(complejoDeportivoAEditar.getNombreComplejo());
+        complejoDeportivo.setUbicacionComplejo(complejoDeportivoAEditar.getUbicacionComplejo());
+        complejoDeportivo.setDeporte(complejoDeportivoAEditar.getDeporte());
+        complejoDeportivo.setCancha(complejoDeportivoAEditar.getCancha());
+       
         ModelAndView maw = this.index();
+        
+        complejoDeportivoServicio.save(complejoDeportivo);
         maw.addObject("exito", "Complejo modificado exitosamente");
         return maw;
     }

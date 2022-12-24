@@ -599,7 +599,41 @@ select, label {
     background-color: var(--contenedor) 
 }
 
+.contenedor-form-complejo label {
+    color: var(--black);
+}
 
+.contenedor-form-complejo input, select, option {
+    padding-left: 1rem;
+    border: none;
+    border-radius: 0.5rem;
+    /*font-weight: 600;*/
+    box-sizing: border-box;
+}
+
+.contenedor-form-cancha label {
+    color: var(--black);
+}
+
+.contenedor-form-cancha input, select, option {
+    padding-left: 1rem;
+    border: none;
+    border-radius: 0.5rem;
+    /*font-weight: 600;*/
+    box-sizing: border-box;
+}
+
+.contenedor-form-deporte label {
+    color: var(--black);
+}
+
+.contenedor-form-deporte input, select, option {
+    padding-left: 1rem;
+    border: none;
+    border-radius: 0.5rem;
+    /*font-weight: 600;*/
+    box-sizing: border-box;
+}
 
 /* FOOTER */
 footer {

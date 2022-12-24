@@ -46,14 +46,14 @@ public class Usuario {
     return this.nombreUsuario.equals(nombreUsuario) && this.contraseña.equals(contraseña);
   }
   
-  public void seleccionarDeporte(String deporte) throws Exception {
+/*  public void seleccionarDeporte(String deporte) throws Exception {
     if (complejoDeportivo == null) {
       throw new Exception("El usuario debe estar asociado a un complejo deportivo antes de seleccionar un deporte.");
     }
-    if (!complejoDeportivo.getDeportes().contains(deporte)) {
+    if (!complejoDeportivo.getDeporte().contains(deporte)) {
       throw new Exception("El deporte seleccionado no está disponible en el complejo deportivo del usuario");
     }
     this.deporte = deporte;
-  }
+  } */
   
 }
