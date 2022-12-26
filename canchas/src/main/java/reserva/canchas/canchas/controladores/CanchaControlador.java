@@ -58,15 +58,16 @@ public class CanchaControlador implements WebMvcConfigurer {
     @PostMapping("/crear")
     public ModelAndView guardar(@Valid Cancha cancha, BindingResult bindingResult) {
         ModelAndView maw = new ModelAndView();
-        if (bindingResult.hasErrors()) {
+        if (!bindingResult.hasErrors()) {
             maw.setViewName("fragments/base");
             maw.addObject("titulo", "Crear Cancha");
             maw.addObject("vista", "canchas/crear");
             // Add any necessary model attributes here
+            canchaServicio.save(cancha);
             return maw;
         }
         
-        canchaServicio.save(cancha);
+        
         //TODO resolver hacia donde redireccionar
         //maw.setViewName("redirect:/api/canchas");
         return maw;

@@ -61,15 +61,16 @@ public class ComplejoDeportivoControlador implements WebMvcConfigurer {
     @PostMapping("/crear")
     public ModelAndView guardar(@Valid ComplejoDeportivo complejoDeportivo, BindingResult bindingResult) {
         ModelAndView maw = new ModelAndView();
-        if (bindingResult.hasErrors()) {
+        if (!bindingResult.hasErrors()) {
             maw.setViewName("fragments/base");
             maw.addObject("titulo", "Crear Complejo");
             maw.addObject("vista", "complejosdeportivos/crear");
             // Add any necessary model attributes here
+            complejoDeportivoServicio.save(complejoDeportivo);
             return maw;
         }
         
-        complejoDeportivoServicio.save(complejoDeportivo);
+        
         //TODO resolver hacia donde redireccionar
         //maw.setViewName("redirect:/api/complejosdeportivos");
         return maw;
