@@ -46,7 +46,7 @@ public class AuthControlador {
 
     @GetMapping({"/loginSuccess"})
     public RedirectView loginCheck(){
-        return new RedirectView("/alquileres");
+        return new RedirectView("/alquileres/crear");
     }
     
     @GetMapping("/registro")

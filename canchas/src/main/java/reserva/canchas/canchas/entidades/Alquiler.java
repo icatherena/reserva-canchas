@@ -5,6 +5,9 @@ import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 import lombok.*;
 
@@ -20,11 +23,15 @@ public class Alquiler implements Serializable {
   private int id;
   
   @Basic
+  @NotNull
   @Temporal(TemporalType.TIMESTAMP)
+  @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
   private Date fechaInicio;
 
   @Basic
+  @NotNull
   @Temporal(TemporalType.TIMESTAMP)
+  @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
   private Date fechaFin;
   
   private int cantidad;
