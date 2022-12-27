@@ -18,6 +18,8 @@
                 
                 <form class="input-container" th:action="@{/logincheck}" method="POST">
 
+                    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+
                         <label for="email">Correo electrónico</label>
                         <input type="text" class="input" id="email" name="email" placeholder="Correo electrónico">
 
