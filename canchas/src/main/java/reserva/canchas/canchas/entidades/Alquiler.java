@@ -5,6 +5,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.*;
+import javax.validation.constraints.Future;
 import javax.validation.constraints.NotNull;
 
 import org.springframework.format.annotation.DateTimeFormat;
@@ -18,8 +19,9 @@ import lombok.*;
 @Builder
 @Table(name="alquileres")
 public class Alquiler implements Serializable {
+
   @Id
-  @GeneratedValue
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
   private int id;
   
   @Basic
@@ -32,6 +34,7 @@ public class Alquiler implements Serializable {
   @NotNull
   @Temporal(TemporalType.TIMESTAMP)
   @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
+  
   private Date fechaFin;
   
   private int cantidad;

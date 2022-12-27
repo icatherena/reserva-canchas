@@ -17,7 +17,7 @@ import lombok.*;
 public class Cancha {
 
   @Id
-  @GeneratedValue
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
   private int id;
   
   private String ubicacionCancha;

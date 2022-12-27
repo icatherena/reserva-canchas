@@ -54,13 +54,13 @@
                 <!--FECHA INICIO-->
                 <div class="col-12">
                     <label for="inputFechaInicio" class="form-label">Desde</label>
-                    <input class="input date-form" type="datetime-local" id="fechaInicio" th:field="*{fechaInicio}" th:errorClass="'is-invalid'">
+                    <input class="input date-form" type="datetime-local" id="fechaInicio" th:field="*{fechaInicio}" th:errorClass="'is-invalid'" onchange="onFechaInicioChange()">
                     <div class="invalid-feedback" th:if="${#fields.hasErrors('fechaInicio')}" th:errors="*{fechaInicio}"></div>
                 </div>
                 <!--FECHA FIN-->
                 <div class="col-12">
                     <label for="inputFechaFin" class="form-label">Hasta</label>
-                    <input class="input date-form" type="datetime-local" id="fechaFin" th:field="*{fechaFin}" th:errorClass="'is-invalid'">
+                    <input class="input date-form" type="datetime-local" id="fechaFin" th:field="*{fechaFin}" th:errorClass="'is-invalid'" disabled>
                     <div class="invalid-feedback" th:if="${#fields.hasErrors('fechaFin')}" th:errors="*{fechaFin}"></div>
                 </div>
                 
@@ -88,6 +88,16 @@
         var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
             return new bootstrap.Popover(popoverTriggerEl)
         })
+        function onFechaInicioChange() {
+            const fechaInicio = document.getElementById('fechaInicio').value;
+            document.getElementById('fechaFin').min = fechaInicio;
+            if (fechaInicio) {
+                fechaFin.min = fechaInicio;
+                fechaFin.disabled = false;
+            } else {
+                fechaFin.disabled = true;
+            }
+        }
     </script>
     
     

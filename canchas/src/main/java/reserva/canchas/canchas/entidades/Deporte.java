@@ -15,7 +15,7 @@ import lombok.*;
 public class Deporte {
 
   @Id
-  @GeneratedValue
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
   private int id;
   
   private String nombre;
