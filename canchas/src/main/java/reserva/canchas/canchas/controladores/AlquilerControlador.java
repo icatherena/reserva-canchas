@@ -72,15 +72,16 @@ public class AlquilerControlador implements WebMvcConfigurer {
   @PostMapping("/crear")
   public ModelAndView guardar(@Valid Alquiler alquiler, BindingResult bindingResult) {
     ModelAndView maw = new ModelAndView();
-    if (bindingResult.hasErrors()) {
+    if (!bindingResult.hasErrors()) {
       maw.setViewName("fragments/base");
       maw.addObject("titulo", "Crear alquiler");
       maw.addObject("vista", "alquileres/crear");
       // Add any necessary model attributes here
+      alquilerServicio.save(alquiler);
       return maw;
     }
     
-    alquilerServicio.save(alquiler);
+    
     //TODO resolver hacia donde redireccionar
   //  maw.setViewName("redirect:/api/alquileres");
     return maw;

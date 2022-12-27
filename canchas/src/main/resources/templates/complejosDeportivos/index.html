@@ -47,20 +47,20 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr th:each="c : ${complejosDeportivos}">
+                    <tr th:each="c : ${complejosdeportivos}">
                         <td th:text="${c.nombreComplejo}"></td>
                         <td th:text="${c.ubicacionComplejo}"></td>
                         <td th:text="${c.deporte.nombre}"></td>
                         <td>
-                            <a class="btn btn-primary btn-editar" th:href="@{'complejosDeportivos/{id}' (id=${c.id})}">
+                            <a class="btn btn-primary btn-editar" th:href="@{'complejosdeportivos/{id}' (id=${c.id})}">
                                 <i class='bx bx-file-find bx-xs'></i>
                             </a>
     
-                            <a class="btn btn-secondary btn-editar" th:href="@{'/complejosDeportivos/editar/{id}' (id=${c.id})}">
+                            <a class="btn btn-secondary btn-editar" th:href="@{'/complejosdeportivos/editar/{id}' (id=${c.id})}">
                                 <i class='bx bx-edit-alt bx-xs'></i>
                             </a>
     
-                            <form class="d-inline" th:action="@{'/complejosDeportivos/{id}' (id=${c.id})}" th:method="DELETE">
+                            <form class="d-inline" th:action="@{'/complejosdeportivos/{id}' (id=${c.id})}" th:method="DELETE">
                                 <button type="submit" class="btn btn-danger btn-editar" onclick="return confirm('¿Está seguro de eliminar el Complejo?')">
                                     <i class='bx bx-trash bx-xs'></i>
                                 </button>
