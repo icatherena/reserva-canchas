@@ -15,7 +15,7 @@ import lombok.*;
 @Table(name="complejosdeportivos")
 public class ComplejoDeportivo {
   @Id
-  @GeneratedValue
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
   private int id;
   
   private String ubicacionComplejo;
