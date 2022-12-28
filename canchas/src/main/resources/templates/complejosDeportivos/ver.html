@@ -21,19 +21,19 @@
             <div>
                 <div class="identificador-lista">
                     <h3>Complejo Deportivo #</h3>
-                    <h3 th:text="${complejoDeportivo.id}"></h3>
+                    <h3 th:text="${complejodeportivo.id}"></h3>
                 </div>
                 <p class="p1">
                     <span class="fw-bold">Nombre del Complejo:</span>
-                    <span th:text="${complejoDeportivo.nombre}"></span>
+                    <span th:text="${complejodeportivo.nombreComplejo}"></span>
                 </p>
                 <p>
                     <span class="fw-bold">Ubicación del Complejo:</span>
-                    <span th:text="${complejoDeportivo.ubicacion}"></span>
+                    <span th:text="${complejodeportivo.ubicacionComplejo}"></span>
                 </p>
                 <p>
                     <span class="fw-bold">Deporte del Complejo:</span> <!--DEBERÍA MOSTRAR UN COMBOBOX?-->
-                    <span th:text="${complejoDeportivo.deporte.nombre}"></span>
+                    <span th:text="${complejodeportivo.deporte.nombre}"></span>
                 </p>                 
             </div>
         </section>
