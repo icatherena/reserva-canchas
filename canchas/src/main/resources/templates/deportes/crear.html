@@ -1,0 +1,53 @@
+    <!--ENCABEZADO-->
+    <header th:fragment="header">
+        <section class="enlaces-header">
+            <h1>Vista de Administrador</h1>
+        </section>
+        <section sec:authorize="isAuthenticated()">
+            <form class="btn-log-out" th:action="@{/logout}" method="POST">
+                <button type="submit" onclick="return confirm('¿Está seguro de cerrar sesión?')">
+                    Cerrar sesión
+                </button>
+            </form>
+        </section>
+    </header>
+    
+    <!--CUERPO-->
+
+    <!--FORMULARIO-->
+
+    <section th:fragment="contenido">
+        <section class="contenedor-form-deporte">
+            <!--COMPLEJO DEPORTIVO-->
+                <form class="card-body" th:action="@{/deportes/crear}" th:object="${deporte}" method="POST">
+    
+                    <div class="mb-3">
+                        <label for="nombre" class="form-label">Deporte</label>
+                        <input type="text" th:field="*{nombre}" th:errorClass="'is-invalid'" placeholder="Deporte">
+                        <div class="invalid-feedback" th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></div>
+                    </div>
+                    
+                    <div>
+                        <button type="submit" class="btn btn-primary btn-buscar">Crear</button>
+                    </div>
+    
+                </form>
+        </section>
+
+        <!--FOOTER-->
+        <footer>
+            <p>Desarrollado por Grupo 7 | Todos los derechos reservados</p>
+            <p>PoloTic | Posadas, Misiones | 2022</p>
+        </footer>
+
+    </section>
+    
+    <script th:fragment="script">
+        $(document).ready(function() {
+            $('.select2').select2({
+                placeholder: 'Seleccione una opción',
+                allowClear: true,
+                width: '100%',
+            });
+        });
+    </script>

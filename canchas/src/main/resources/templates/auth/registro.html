@@ -1,0 +1,39 @@
+    <!--ENCABEZADO-->
+    <header th:fragment="header">
+        <section class="enlaces-header-home">
+            <h1>Gestor de reservas</h1>
+        </section>
+        <section class="btn-log-in">
+            <a aria-current="page" sec:authorize="isAnonymous()" href="/">Inicio</a>
+        </section>
+    </header>
+    
+    <!--CUERPO-->
+    <section class="sig-up-contenedor">
+        <section class="sign-up-container" th:fragment="contenido">
+            <h1 class="title-sign-up">Crea tú cuenta</h1>
+            <form class="input-container-sign-up" th:action="@{/registro}" th:object="${registroDto}" method="POST">
+                
+                <label for="usuario">Usuario</label>
+                <input class="input" type="text" id="usuario" th:field="*{usuario}" placeholder="Usuario">
+                <div class="invalid-feedback" th:if="${#fields.hasErrors('usuario')}" th:errors="*{usuario}"></div>
+
+
+                <label for="email">Correo electrónico</label>
+                <input class="input" type="email" id="email" th:field="*{email}" th:errorClass="'is-invalid'" placeholder="Correo electrónico">
+                <div class="invalid-feedback" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></div>
+                
+                <label for="contraseña">Contraseña</label>
+                <input class="input" type="password" id="contraseña" th:field="*{contraseña}" placeholder="Contraseña">
+                <div class="invalid-feedback" th:if="${#fields.hasErrors('contraseña')}" th:errors="*{contraseña}"></div>
+            
+                <label for="confirmar">Repita la contraseña</label>
+                <input class="input" type="password" id="confirmar" th:field="*{confirmar}" th:errorClass="'is-invalid'" placeholder="Repita la contraseña">
+                <div class="invalid-feedback" th:if="${#fields.hasErrors('confirmar')}" th:errors="*{confirmar}"></div>
+
+                <button class="btn" type="submit">Crear</button>
+            </form>
+        </section>
+    </section>
+
+    <script th:fragment="script"></script>

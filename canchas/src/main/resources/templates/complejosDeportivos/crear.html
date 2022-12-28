@@ -1,0 +1,67 @@
+    <!--ENCABEZADO-->
+    <header th:fragment="header">
+        <section class="enlaces-header">
+            <h1>Vista de Administrador</h1>
+        </section>
+        <section sec:authorize="isAuthenticated()">
+            <form class="btn-log-out" th:action="@{/logout}" method="POST">
+                <button type="submit" onclick="return confirm('¿Está seguro de cerrar sesión?')">
+                    Cerrar sesión
+                </button>
+            </form>
+        </section>
+    </header>
+    
+    <!--CUERPO-->
+
+    <!--FORMULARIO-->
+
+    <section th:fragment="contenido">
+        <section class="contenedor-form-complejo">
+            <!--COMPLEJO DEPORTIVO-->
+                <form class="card-body" th:action="@{/complejosdeportivos/crear}" th:object="${complejoDeportivo}" method="POST">
+    
+                            <div class="mb-3">
+                                <label for="nombreComplejo" class="form-label">Nombre del Complejo</label>
+                                <input type="text" th:field="*{nombreComplejo}" th:errorClass="'is-invalid'" placeholder="Nombre del Complejo">
+                                <div class="invalid-feedback" th:if="${#fields.hasErrors('nombreComplejo')}" th:errors="*{nombreComplejo}"></div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="deporte" class="form-label">Deporte</label>
+                                <select id="deporte" th:field="*{deporte}" th:errorClass="'is-invalid'" placeholder="Deporte">
+                                    <option selected value=""></option>
+                                    <option th:each="d : ${deportes}" th:value="${d.id}" th:text="${d.nombre}"></option>
+                                </select>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="ubicacionComplejo" class="form-label">Ubicación del Complejo</label>
+                                <input type="text" th:field="*{ubicacionComplejo}" th:errorClass="'is-invalid'" placeholder="Ubicación del Complejo">
+                                <div class="invalid-feedback" th:if="${#fields.hasErrors('ubicacionComplejo')}" th:errors="*{ubicacionComplejo}"></div>
+                            </div>
+        
+                            <div>
+                                <button type="submit" class="btn btn-primary btn-buscar">Guardar</button>
+                            </div>
+    
+                </form>
+        </section>
+        
+        <!--FOOTER-->
+        <footer>
+            <p>Desarrollado por Grupo 7 | Todos los derechos reservados</p>
+            <p>PoloTic | Posadas, Misiones | 2022</p>
+        </footer>
+
+    </section>
+    
+    <script th:fragment="script">
+        $(document).ready(function() {
+            $('.select2').select2({
+                placeholder: 'Seleccione una opción',
+                allowClear: true,
+                width: '100%',
+            });
+        });
+    </script>

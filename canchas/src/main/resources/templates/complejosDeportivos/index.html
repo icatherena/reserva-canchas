@@ -1,0 +1,87 @@
+    <!--ENCABEZADO-->
+    <header th:fragment="header">
+        <section class="enlaces-header">
+            <h1>Vista de Administrador</h1>
+        </section>
+        <section sec:authorize="isAuthenticated()">
+            <form class="btn-log-out" th:action="@{/logout}" method="POST">
+                <button type="submit" onclick="return confirm('¿Está seguro de cerrar sesión?')">
+                    Cerrar sesión
+                </button>
+            </form>
+        </section>
+    </header>
+    
+    <!--CUERPO-->
+
+    <!--FORMULARIO-->
+
+    <section th:fragment="contenido">
+        <section class="contenedor-form-complejo">
+        
+            <div class="row">
+                <div th:if="${exito}" class="alert alert-success alert-dismissible fade show">
+                    <span th:text="${exito}"></span>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+                <div th:if="${error}" class="alert alert-danger alert-dismissible fade show">
+                    <span th:text="${error}"></span>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            </div>
+    
+            <div class="row mb-3">
+                <div class="col h3">Listado de Complejos</div>
+                <a href="complejosdeportivos/crear" class="col-auto btn btn-lg btn-success btn-crear"> 
+                    <i class='bx bx-plus bx-xs'></i>
+                </a>
+            </div>
+    
+            <table id="complejosDeportivos" class="display" style="width:100%">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Ubicación</th>
+                        <th>Deporte</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="c : ${complejosdeportivos}">
+                        <td th:text="${c.nombreComplejo}"></td>
+                        <td th:text="${c.ubicacionComplejo}"></td>
+                        <td th:text="${c.deporte.nombre}"></td>
+                        <td>
+                            <a class="btn btn-primary btn-editar" th:href="@{'complejosdeportivos/{id}' (id=${c.id})}">
+                                <i class='bx bx-file-find bx-xs'></i>
+                            </a>
+    
+                            <a class="btn btn-secondary btn-editar" th:href="@{'/complejosdeportivos/editar/{id}' (id=${c.id})}">
+                                <i class='bx bx-edit-alt bx-xs'></i>
+                            </a>
+    
+                            <form class="d-inline" th:action="@{'/complejosdeportivos/{id}' (id=${c.id})}" th:method="DELETE">
+                                <button type="submit" class="btn btn-danger btn-editar" onclick="return confirm('¿Está seguro de eliminar el Complejo?')">
+                                    <i class='bx bx-trash bx-xs'></i>
+                                </button>
+                            </form>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+    
+        </section>
+
+         <!--FOOTER-->
+        <footer>
+            <p>Desarrollado por Grupo 7 | Todos los derechos reservados</p>
+            <p>PoloTic | Posadas, Misiones | 2022</p>
+        </footer>
+
+    </section>
+
+    <script th:fragment="script">
+        $(document).ready(function() {
+            $('#complejosDeportivos').DataTable();
+        } );
+    </script>

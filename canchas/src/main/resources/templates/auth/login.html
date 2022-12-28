@@ -1,0 +1,43 @@
+    <!--ENCABEZADO-->
+    <header th:fragment="header">
+        <section class="enlaces-header-home">
+            <h1>Gestor de reservas</h1>
+        </section>
+        <section class="btn-log-in">
+            <a aria-current="page" sec:authorize="isAnonymous()" href="/">Inicio</a>
+        </section>
+    </header>
+     <!--CUERPO-->
+    <section th:fragment="contenido">
+        
+        <section class="log-in-container">
+        
+            <article class="log-in-info-container">
+        
+                <h1 class="title">Iniciar sesión</h1>
+                
+                <form class="input-container" th:action="@{/logincheck}" method="POST">
+
+                    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+
+                        <label for="email">Correo electrónico</label>
+                        <input type="text" class="input" id="email" name="email" placeholder="Correo electrónico">
+
+                        <label for="email">Contraseña</label>
+                        <input type="password" class="input" id="contraseña" name="contraseña" placeholder="Contraseña">
+
+                        <button type="submit" class="btn">Acceder</button>
+
+                </form>
+                
+                <h2 class="enlace-sign-up" sec:authorize="isAnonymous()">¿No tienes una cuenta? Crea una <a href="/registro">aquí</a></h2>
+            
+            </article>
+            
+            <img class="image-container" src="images/cancha.png" alt="Cancha">
+        
+        </section>
+
+    </section>
+
+    <script th:fragment="script"></script>

@@ -1,0 +1,103 @@
+    <!--ENCABEZADO-->
+    <header th:fragment="header">
+        <section class="enlaces-header">
+            <h1>Gestor de reservas</h1>
+        </section>
+        <section sec:authorize="isAuthenticated()">
+            <form class="btn-log-out" th:action="@{/logout}" method="POST">
+                <button type="submit" onclick="return confirm('¿Está seguro de cerrar sesión?')">
+                    Cerrar sesión
+                </button>
+            </form>
+        </section>
+    </header>
+    
+    <!--CUERPO-->
+    
+    <!--FORMULARIO-->
+    <section th:fragment="contenido">
+        <section class="contenedor-form-crear">
+            
+            <form class="row g-3" th:action="@{/alquileres/crear}" th:object="${alquiler}" method="POST">
+                
+                <!--COMPLEJO-->
+                <h3>Selecciona el complejo</h3>
+                <div class="col-12">
+                    <label for="complejoDeportivo" class="form-label">Ubicación</label>
+                    <select id="complejoDeportivo" th:field="*{complejoDeportivo}" th:errorClass="'is-invalid'">
+                        <option selected value=""></option>
+                        <option th:each="c : ${complejosDeportivos}" th:value="${c.id}" th:text="${c.ubicacionComplejo}"></option>
+                    </select>
+                </div>
+                
+                <!--DEPORTE-->
+                <h3>Selecciona el deporte</h3>        
+                <div class="col-12">
+                    <label for="deporte" class="form-label">Deporte</label>
+                    <select id="deporte" th:field="*{deporte}" th:errorClass="'is-invalid'">
+                        <option selected value=""></option>
+                        <option th:each="d : ${deportes}" th:value="${d.id}" th:text="${d.nombre}"></option>
+                    </select>
+                </div> 
+                
+                <h3>Selecciona la cancha</h3>
+                <!--MATERIAL CANCHA-->
+                <div class="col-12">
+                    <label for="cancha" class="form-label">Material</label>
+                    <select id="cancha" th:field="*{cancha}" th:errorClass="'is-invalid'">
+                        <option selected value=""></option>
+                        <option th:each="c : ${canchas}" th:value="${c.id}" th:text="${c.materialCancha}"></option>
+                    </select>
+                </div>
+                
+                <h3>Datos de la reserva</h3>
+                <!--FECHA INICIO-->
+                <div class="col-12">
+                    <label for="inputFechaInicio" class="form-label">Desde</label>
+                    <input class="input date-form" type="datetime-local" id="fechaInicio" th:field="*{fechaInicio}" th:errorClass="'is-invalid'" onchange="onFechaInicioChange()">
+                    <div class="invalid-feedback" th:if="${#fields.hasErrors('fechaInicio')}" th:errors="*{fechaInicio}"></div>
+                </div>
+                <!--FECHA FIN-->
+                <div class="col-12">
+                    <label for="inputFechaFin" class="form-label">Hasta</label>
+                    <input class="input date-form" type="datetime-local" id="fechaFin" th:field="*{fechaFin}" th:errorClass="'is-invalid'" disabled>
+                    <div class="invalid-feedback" th:if="${#fields.hasErrors('fechaFin')}" th:errors="*{fechaFin}"></div>
+                </div>
+                
+                <!--SUBMIT BUTTON-->
+                <section class="contenedor-submit">
+                    <div class="col-auto">
+                        <button type="submit" class="btn btn-primary submit-btn btn-buscar">Buscar canchas</button>
+                    </div>
+                </section>
+                
+            </form>
+            
+        </section>
+        
+        <!--FOOTER-->
+        <footer>
+            <p>Desarrollado por Grupo 7 | Todos los derechos reservados</p>
+            <p>PoloTic | Posadas, Misiones | 2022</p>
+        </footer>
+        
+    </section>
+    
+    <script>
+        var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
+        var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
+            return new bootstrap.Popover(popoverTriggerEl)
+        })
+        function onFechaInicioChange() {
+            const fechaInicio = document.getElementById('fechaInicio').value;
+            document.getElementById('fechaFin').min = fechaInicio;
+            if (fechaInicio) {
+                fechaFin.min = fechaInicio;
+                fechaFin.disabled = false;
+            } else {
+                fechaFin.disabled = true;
+            }
+        }
+    </script>
+    
+    

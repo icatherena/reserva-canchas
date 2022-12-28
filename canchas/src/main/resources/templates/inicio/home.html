@@ -1,0 +1,60 @@
+    <!--ENCABEZADO-->
+    <header th:fragment="header">
+        <section class="enlaces-header-home">
+            <h1>Gestor de reservas</h1>
+            <a href="#quienes-bloque">¿Quiénes somos?</a>
+            <a href="#mision-bloque">Nuestra misión</a>
+            <a href="#soporte">Soporte</a>
+        </section>
+        <section class="btn-log-in">
+            <a aria-current="page" sec:authorize="isAnonymous()" href="/login">Acceder</a>
+        </section>
+      <!--  <section sec:authorize="isAuthenticated()">
+            <form class="btn-log-in"  th:action="@{/logout}" method="POST">
+                <button type="submit" onclick="return confirm('¿Está seguro de cerrar sesión?')">
+                    Acceder
+                </button>
+            </form>
+        </section> -->
+    </header>
+
+    <!--CUERPO-->
+        <section class="contenedor-cuerpo" th:fragment="contenido">
+            <section class="quienes-bloque" id="quienes-bloque">
+                <div class="q-txt">
+                    <h3>¿Quiénes somos?</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis repudiandae quasi consectetur reprehenderit, error ex corporis iure, ullam accusantium sunt laborum in omnis assumenda quo? Quos in quae tempora recusandae.</p>
+                </div>
+                <div class="q-img">
+                    <img src="images/logo.png" alt="Logo-empresa">
+                </div>
+            </section>
+            <section class="mision-bloque" id="mision-bloque">
+                <div class="m-img">
+                    <img src="" alt="">
+                </div>
+                <div class="m-txt">
+                    <h3>Nuestra misión y nuestros valores</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium provident temporibus pariatur repudiandae odit minima optio blanditiis, odio quisquam qui earum iusto placeat tempora commodi sequi. Nam eos deleniti dolorum!</p>
+                </div>
+            </section>
+            <section class="soporte-bloque" id="soporte">
+                <div class="s-txt">
+                    <h3>¿Necesitas asistencia?</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae ut vero voluptatem expedita numquam minus totam voluptas, quia quasi tempora quaerat cupiditate voluptates quas culpa, officiis magnam praesentium repellendus. Soluta!
+                    Soporte podrá brindarte una solución. ¡Haz click <a href="mailto:soportereservas@gmail.com">aquí</a>!</p>
+                </div>
+                <div class="s-img">
+                    <img src="" alt="">
+                </div>
+            </section>
+
+            <!--FOOTER-->
+            <footer>
+                <p>Desarrollado por Grupo 7 | Todos los derechos reservados</p>
+                <p>PoloTic | Posadas, Misiones | 2022</p>
+            </footer>
+
+        </section>
+
+ <script th:fragment="script"></script>
