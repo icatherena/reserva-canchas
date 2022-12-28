@@ -36,7 +36,7 @@ public class SecurityConfiguration {
             .authorizeHttpRequests().antMatchers( "/alquileres/crear")
                 .hasAnyRole("Administrador", "Usuario")
             .and()
-            .authorizeHttpRequests().antMatchers("/alquileres","/alquileres/crear", "/complejosdeportivos", "/deportes", "/canchas", "/roles","/alquileres/editar/*")
+            .authorizeHttpRequests().antMatchers("/alquileres","/alquileres/crear","/alquileres/ver", "/complejosdeportivos", "/deportes", "/canchas", "/roles","/alquileres/editar/*")
                 .hasRole("Administrador")
             .and()
             .authorizeHttpRequests().antMatchers("/alquileres/editar/*")

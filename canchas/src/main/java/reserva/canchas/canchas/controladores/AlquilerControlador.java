@@ -144,5 +144,19 @@ public class AlquilerControlador implements WebMvcConfigurer {
     maw.addObject("exito", "Reserva eliminada exitosamente");
     return maw;
   }
+
+  @GetMapping("/ver")
+  public ModelAndView ver(Alquiler alquiler) {
+    ModelAndView maw = new ModelAndView();
+    maw.setViewName("fragments/base");
+    maw.addObject("titulo", "Ver alquiler");
+    maw.addObject("vista", "alquileres/ver");
+    maw.addObject("complejosDeportivos", complejoDeportivoServicio.getAll());
+    maw.addObject("deportes", deporteServicio.getAll());
+    maw.addObject("canchas", canchaServicio.getAll());
+    maw.addObject("deportes", alquilerServicio.getAll());
+    // Add any necessary model attributes here
+    return maw;
+  }
   
 }
