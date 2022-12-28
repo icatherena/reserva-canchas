@@ -1,59 +1,59 @@
-    <!--ENCABEZADO-->
-    <header th:fragment="header">
-        <section class="enlaces-header">
-            <h1>Gestor de reservas</h1>
-        </section>
-        <section sec:authorize="isAuthenticated()">
-            <form class="btn-log-out" th:action="@{/logout}" method="POST">
-                <button type="submit" onclick="return confirm('¿Está seguro de cerrar sesión?')">
-                    Cerrar sesión
-                </button>
-            </form>
-        </section>
-    </header>
-    
-    <!--CUERPO-->
+<!--ENCABEZADO-->
+<header th:fragment="header">
+    <section class="enlaces-header">
+        <h1>Gestor de reservas</h1>
+    </section>
+    <section sec:authorize="isAuthenticated()">
+        <form class="btn-log-out" th:action="@{/logout}" method="POST">
+            <button type="submit" onclick="return confirm('¿Está seguro de cerrar sesión?')">
+                Cerrar sesión
+            </button>
+        </form>
+    </section>
+</header>
 
-    <!--FORMULARIO-->
+<!--CUERPO-->
 
-    <section th:fragment="contenido">
+<!--FORMULARIO-->
 
-        <section class="contenedor-form-ver">
-            <div>
-                <div class="identificador-lista">
-                    <h3>Reserva #</h3>
-                    <h3 th:text="${alquiler.id}"></h3>
-                </div>
-                <p class="p1">
-                    <span class="fw-bold">Ubicación del Complejo:</span>
-                    <span th:text="${alquiler.complejoDeportivo.ubicacionComplejo}"></span>
-                </p>
-                <p>
-                    <span class="fw-bold">Deporte:</span>
-                    <span th:text="${alquiler.deporte.nombre}"></span>
-                </p>
-                <p>
-                    <span class="fw-bold">Material de la Cancha:</span> 
-                    <span th:text="${alquiler.cancha.materialCancha}"></span>
-                </p>           
-                <p>
-                    <span class="fw-bold">Inicio:</span> 
-                    <span th:text="${#dates.format(alquiler.fechaInicio, 'd MMMMM yyyy')}"></span>
-                </p>  
-                <p>
-                    <span class="fw-bold">Fin:</span> 
-                    <span th:text="${#dates.format(alquiler.fechaFin, 'd MMMMM yyyy')}"></span>
-                    <!-- <span th:text="${alquiler.fechaFin}"></span> -->
-                </p>         
+<section th:fragment="contenido">
+
+    <section class="contenedor-form-ver">
+        <div>
+            <div class="identificador-lista">
+                <h3>Reserva #</h3>
+                <h3 th:text="${alquiler.id}"></h3>
             </div>
-        </section>
-
-        <!--FOOTER-->
-        <footer>
-            <p>Desarrollado por Grupo 7 | Todos los derechos reservados</p>
-            <p>PoloTic | Posadas, Misiones | 2022</p>
-        </footer>
-
+            <p class="p1">
+                <span class="fw-bold">Ubicación del Complejo:</span>
+                <span th:text="${alquiler.complejoDeportivo.ubicacionComplejo}"></span>
+            </p>
+            <p>
+                <span class="fw-bold">Deporte:</span>
+                <span th:text="${alquiler.deporte.nombre}"></span>
+            </p>
+            <p>
+                <span class="fw-bold">Material de la Cancha:</span> 
+                <span th:text="${alquiler.cancha.materialCancha}"></span>
+            </p>           
+            <p>
+                <span class="fw-bold">Inicio:</span> 
+                <span th:text="${#dates.format(alquiler.fechaInicio, 'd MMMMM yyyy HH:mm')}"></span>
+            </p>  
+            <p>
+                <span class="fw-bold">Fin:</span> 
+                <span th:text="${#dates.format(alquiler.fechaFin, 'd MMMMM yyyy HH:mm')}"></span>
+                <!-- <span th:text="${alquiler.fechaFin}"></span> -->
+            </p>         
+        </div>
     </section>
 
-    <script th:fragment="script"></script>
+    <!--FOOTER-->
+    <footer>
+        <p>Desarrollado por Grupo 7 | Todos los derechos reservados</p>
+        <p>PoloTic | Posadas, Misiones | 2022</p>
+    </footer>
+
+</section>
+
+<script th:fragment="script"></script>

@@ -17,42 +17,44 @@ import reserva.canchas.canchas.servicios.UsuarioServicio;
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SecurityConfiguration {
-
+    
     @Autowired
     private UsuarioServicio usuarioServicio;
-
+    
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception{
         auth.userDetailsService(usuarioServicio).passwordEncoder(new BCryptPasswordEncoder());
     }
-
+    
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
-            .authorizeHttpRequests()
-                .antMatchers("/css/*", "/js/*", "/fonts/*", "/images/*", "/images/*/*", "/", "/registro")
-                .permitAll()
-            .and()
-            .authorizeHttpRequests().antMatchers( "/alquileres/crear")
-                .hasAnyRole("Administrador", "Usuario")
-            .and()
-            .authorizeHttpRequests().antMatchers("/alquileres","/alquileres/crear","/alquileres/ver", "/complejosdeportivos", "/deportes", "/canchas", "/roles","/alquileres/editar/*")
-                .hasRole("Administrador")
-            .and()
-            .authorizeHttpRequests().antMatchers("/alquileres/editar/*")
-                .hasRole("Usuario")
-                .anyRequest().authenticated()
-            .and()
-            .formLogin().loginPage("/login").loginProcessingUrl("/logincheck")
-                .usernameParameter("email").passwordParameter("contraseña")
-                .defaultSuccessUrl("/loginSuccess").permitAll()
-            .and()
-            .logout().logoutUrl("/logout").logoutSuccessUrl("/login")
-                .invalidateHttpSession(true)
-                .deleteCookies("JSESSIONID")
-                .permitAll();
-
+        .authorizeHttpRequests()
+        .antMatchers("/css/*", "/js/*", "/fonts/*", "/images/*", "/images/*/*", "/", "/registro")
+        .permitAll()
+        .and()
+        .authorizeHttpRequests().antMatchers( "/alquileres/crear")
+        .hasAnyRole("Administrador", "Usuario")
+        .and()
+        .authorizeHttpRequests().antMatchers("/alquileres","/alquileres/crear", "/alquileres/editar/*", "/alquileres/ver",
+        "/complejosdeportivos", "/complejosdeportivos/ver", "/complejosdeportivos/editar/*", "/deportes", "/deportes/ver", "/deportes/editar/*",
+        "/canchas", "/canchas/ver", "/canchas/editar/*", "/roles", "/roles/ver", "/roles/editar/*")
+        .hasRole("Administrador")
+        .and()
+        .authorizeHttpRequests().antMatchers("/alquileres/editar/*")
+        .hasRole("Usuario")
+        .anyRequest().authenticated()
+        .and()
+        .formLogin().loginPage("/login").loginProcessingUrl("/logincheck")
+        .usernameParameter("email").passwordParameter("contraseña")
+        .defaultSuccessUrl("/loginSuccess").permitAll()
+        .and()
+        .logout().logoutUrl("/logout").logoutSuccessUrl("/login")
+        .invalidateHttpSession(true)
+        .deleteCookies("JSESSIONID")
+        .permitAll();
+        
         return http.build();
     }
-
+    
 }
