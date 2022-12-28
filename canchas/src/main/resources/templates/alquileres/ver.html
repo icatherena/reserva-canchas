@@ -38,11 +38,11 @@
                 </p>           
                 <p>
                     <span class="fw-bold">Inicio:</span> 
-                    <span th:text="${#dates.format(alquiler.fechaInicio, 'd MMMMM yyyy')}"></span>
+                    <span th:text="${#dates.format(alquiler.fechaInicio, 'd MMMMM yyyy HH:mm')}"></span>
                 </p>  
                 <p>
                     <span class="fw-bold">Fin:</span> 
-                    <span th:text="${#dates.format(alquiler.fechaFin, 'd MMMMM yyyy')}"></span>
+                    <span th:text="${#dates.format(alquiler.fechaFin, 'd MMMMM yyyy HH:mm')}"></span>
                     <!-- <span th:text="${alquiler.fechaFin}"></span> -->
                 </p>         
             </div>

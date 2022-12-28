@@ -54,8 +54,8 @@
                         <td th:text="${a.complejoDeportivo.ubicacionComplejo}"></td>
                         <td th:text="${a.deporte.nombre}"></td>
                         <td th:text="${a.cancha.materialCancha}"></td>
-                        <td th:text="${#dates.format(a.fechaInicio, 'dd/MM/yyyy')}"></td>
-                        <td th:text="${#dates.format(a.fechaFin, 'dd/MM/yyyy')}"></td>
+                        <td th:text="${#dates.format(a.fechaInicio, 'dd/MM/yyyy HH:mm')}"></td>
+                        <td th:text="${#dates.format(a.fechaFin, 'dd/MM/yyyy HH:mm')}"></td>
                         <td>
                             <a class="btn btn-primary btn-editar" th:href="@{'alquileres/{id}' (id=${a.id})}">
                                 <i class='bx bx-file-find bx-xs' ></i>
