@@ -20,7 +20,7 @@
     <section th:fragment="contenido">
         <section class="contenedor-form-complejo">
             <!--COMPLEJO DEPORTIVO-->
-                <form class="card-body" th:action="@{'/complejosdeportivos/editar/{id}' (id=${complejodeportivo.id})}" th:object="${complejodeportivo}" th:method="PUT">
+                <form class="card-body" th:action="@{'/complejosdeportivos/editar/{id}' (id=${complejoDeportivo.id})}" th:object="${complejoDeportivo}" th:method="PUT">
     
                             <div class="mb-3">
                                 <label for="nombreComplejo" class="form-label">Nombre</label>
