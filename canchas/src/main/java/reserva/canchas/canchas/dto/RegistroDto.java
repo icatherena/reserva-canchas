@@ -5,8 +5,8 @@ import javax.validation.constraints.*;
 import lombok.*;
 
 @Data
-//@Confirmar
-//@EmailUnico
+@Confirmar
+@EmailUnico
 public class RegistroDto {
 
     @NotNull
